@@ -1,0 +1,16 @@
+/* 自定义动画：底部装饰线从中心向两侧展开 */
+.growHorizontalFromCenter {
+  width: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  animation: growLine 0.8s forwards ease-in-out;
+}
+
+@keyframes growLine {
+  from {
+    width: 0;
+  }
+  to {
+    width: 100%;
+  }
+}

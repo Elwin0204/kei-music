@@ -1,0 +1,44 @@
+{
+  "nav": {
+    "home": "First Encounter",
+    "biography": "Mementos",
+    "music": "Discography",
+    "concerts": "Gallery",
+    "contact": "Contact"
+  },
+  "home": {
+    "spring": {
+      "title": "Overture of Early Spring,Melody Begins to Ring",
+      "subtitle": "Listen to the Classics,Attend a Musical Rendezvous"
+    },
+    "summer": {
+      "title": "Starry Summer Night,Melody Like a Dream",
+      "subtitle": "Listen to the Classics,Enjoy a Night of Starry Sky and Cicada Chorus"
+    },
+    "autumn": {
+      "title": "Cool Autumn Breeze,Melody Like Fine Wine",
+      "subtitle": "Listen to the Classics,Savor the Fragrance of Osmanthus in a Cup"
+    },
+    "winter": {
+      "title": "Dressed in Silver Snow,Melody Like a Poem",
+      "subtitle": "Listen to the Classics,Admire Trees Blooming with Pear Blossom-like Snow"
+    }
+  },
+  "footer": {
+    "aria_label": "Website footer",
+    "social": {
+      "weixin": "WeChat",
+      "weibo": "Sina Weibo",
+      "youtube": "YouTube",
+      "xiaohongshu": "XiaoHongShu",
+      "douyin": "TikTok",
+      "weixin_aria": "Visit WeChat Official Account",
+      "weibo_aria": "Visit Sina Weibo Profile",
+      "youtube_aria": "Visit YouTube Channel",
+      "xiaohongshu_aria": "Visit XiaoHongShu Profile",
+      "douyin_aria": "Visit TikTok Profile"
+    },
+    "copyright_holder": "Chen Jia",
+    "copyright_text": "All rights reserved."
+  }
+}

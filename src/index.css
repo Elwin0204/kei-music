@@ -1,0 +1,179 @@
+/* src/index.css */
+@import 'tailwindcss';
+
+@plugin 'tailwindcss-animate';
+@plugin 'tailwind-scrollbar';
+
+@source '../index.html';
+@source './**/*.{ts,tsx}';
+
+@custom-variant dark (&:is(.dark *));
+
+html {
+  scroll-behavior: smooth;
+}
+
+/*
+  🌸 Kei-Music 主题色系：
+  - 主色：薰衣草紫（Lavender Purple） → 温柔、优雅、宁静
+  - 辅助：墨绿（文化感）、酒红（怀旧）
+  - 背景：非常浅的薰衣草紫 / 暖灰（非纯白/纯黑）
+*/
+:root {
+  /* 浅色模式 */
+  --background: #faf5ff; /* 更轻盈的浅紫色，接近白色 */
+  --foreground: #2d2b28; /* 深棕灰，非纯黑 */
+  --card: #ffffff;
+  --card-foreground: #2d2b28;
+  --popover: #ffffff; /* 模态框背景色 - 浅色 */
+  --popover-foreground: #2d2b28; /* 模态框文字色 - 浅色 */
+  --primary: #B57EDC; /* 薰衣草紫 —— 主强调色 */
+  --primary-foreground: #faf5ff;
+  --secondary: #f0e8e0; /* 浅米灰 */
+  --secondary-foreground: #5a5550;
+  --muted: #f0e8e0;
+  --muted-foreground: #6b645e;
+  --accent: #4a6b5f; /* 墨绿 */
+  --accent-foreground: #faf5ff;
+  --destructive: #a53e4c; /* 酒红 */
+  --destructive-foreground: #faf5ff;
+  --border: #e0d8d0;
+  --input: #e0d8d0;
+  --ring: #B57EDC80; /* 使用薰衣草紫的透明版本 */
+  --radius: 0.75rem;
+
+  /* Sidebar (if used) */
+  --sidebar-background: #faf5ff;
+  --sidebar-foreground: #5a5550;
+  --sidebar-primary: #B57EDC;
+  --sidebar-primary-foreground: #faf5ff;
+  --sidebar-accent: #f0e8e0;
+  --sidebar-accent-foreground: #5a5550;
+  --sidebar-border: #e0d8d0;
+  --sidebar-ring: #B57EDC;
+
+  /* Home */
+  --home-bg-opacity: 0.7;
+}
+
+.dark {
+  /* 深色模式：深灰色，非冷黑 */
+  --background: #121212; /* 较深的灰色 */
+  --foreground: #e0e0e0; /* 浅灰色，提高可读性 */
+  --card: #1f1f1f; /* 稍微亮一点的灰色 */
+  --card-foreground: #e0e0e0;
+  --popover: #1f1f1f; /* 模态框背景色 - 深色 */
+  --popover-foreground: #e0e0e0; /* 模态框文字色 - 深色 */
+  --primary: #D1ADE3; /* 更亮的薰衣草紫 */
+  --primary-foreground: #121212;
+  --secondary: #333333; /* 中等灰色 */
+  --secondary-foreground: #bfbfbf; /* 浅灰色 */
+  --muted: #2b2b2b; /* 稍微亮一点的灰色 */
+  --muted-foreground: #9a928a; /* 柔和的灰色 */
+  --accent: #5d8274; /* 亮墨绿 */
+  --accent-foreground: #e0e0e0;
+  --destructive: #c25a68; /* 亮酒红 */
+  --destructive-foreground: #e0e0e0;
+  --border: #3a3a3a; /* 柔和的灰色边框 */
+  --input: #3a3a3a; /* 输入框背景 */
+  --ring: #D1ADE380; /* 使用更亮的薰衣草紫的透明版本 */
+  --sidebar-background: #121212;
+  --sidebar-foreground: #bfbfbf;
+  --sidebar-primary: #D1ADE3;
+  --sidebar-primary-foreground: #121212;
+  --sidebar-accent: #333333;
+  --sidebar-accent-foreground: #bfbfbf;
+  --sidebar-border: #3a3a3a;
+  --sidebar-ring: #D1ADE3;
+  --home-bg-opacity: 0.4;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --color-sidebar: var(--sidebar-background);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+  --animate-accordion-down: accordion-down 0.2s ease-out;
+  --animate-accordion-up: accordion-up 0.2s ease-out;
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground font-sans;
+    /* 中文优先，优雅 fallback */
+    font-family: 
+      "Helvetica Neue", 
+      "PingFang SC", 
+      "Microsoft YaHei", 
+      "Segoe UI", 
+      sans-serif;
+  }
+
+  /* 标题用衬线体（致敬经典） */
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 
+      "Crimson Pro", 
+      "Songti SC", 
+      "SimSun", 
+      serif;
+    font-weight: 600;
+  }
+}
+
+/* 自定义滚动条（匹配薰衣草紫主题） */
+::-webkit-scrollbar {
+  width: 4px;
+  height: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: var(--primary); /* 使用主题主色 */
+  border-radius: 4px;
+  opacity: 0.5; /* 使其半透明，更柔和 */
+}
+
+::-webkit-scrollbar-track {
+  background-color: var(--background); /* 使用页面背景色填充轨道 */
+  border-radius: 4px; /* 与滑块保持一致 */
+}
+
+/* 暗色模式下的滚动条 */
+.dark {
+  ::-webkit-scrollbar-thumb {
+    background-color: var(--primary); /* 在暗色模式下同样使用主色，因为 --primary 已经是亮化的 */
+    opacity: 0.4; /* 暗色模式下可以稍微降低一点透明度，但依然保持柔和 */
+  }
+  ::-webkit-scrollbar-track {
+    background-color: var(--background); /* 暗色模式下的背景色 */
+  }
+}

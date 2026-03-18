@@ -1,0 +1,15 @@
+/* src/pages/Home.module.css */
+
+.homeBackground {
+  background-image: url('@/assets/images/home_bg_mobile.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  opacity: var(--home-bg-opacity);
+}
+
+@media (min-width: 768px) {
+  .homeBackground {
+    background-image: url('@/assets/images/home_bg_pc.jpg');
+  }
+}

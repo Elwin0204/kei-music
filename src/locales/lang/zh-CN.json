@@ -1,0 +1,44 @@
+{
+  "nav": {
+    "home": "初遇",
+    "biography": "拾光",
+    "music": "乐府",
+    "concerts": "雅集",
+    "contact": "洽谈"
+  },
+  "home": {
+    "spring": {
+      "title": "初春序曲，佳音始鸣",
+      "subtitle": "聆听经典，共赴一场音乐之约"
+    },
+    "summer": {
+      "title": "夏夜繁星，佳音如梦",
+      "subtitle": "聆听经典，共赏一夜星河蝉鸣"
+    },
+    "autumn": {
+      "title": "金秋送爽，佳音如醇",
+      "subtitle": "聆听经典，共品一盏金桂飘香"
+    },
+    "winter": {
+      "title": "银装素裹，佳音如诗",
+      "subtitle": "聆听经典，共赏一树梨花开放"
+    }
+  },
+  "footer": {
+    "aria_label": "网站页脚",
+    "social": {
+      "weixin": "微信视频号",
+      "weibo": "微博",
+      "youtube": "YouTube",
+      "xiaohongshu": "小红书",
+      "douyin": "抖音",
+      "weixin_aria": "访问微信视频号",
+      "weibo_aria": "访问微博主页",
+      "youtube_aria": "访问 YouTube 频道",
+      "xiaohongshu_aria": "访问小红书主页",
+      "douyin_aria": "访问抖音主页"
+    },
+    "copyright_holder": "陈佳",
+    "copyright_text": "保留所有权利。"
+  }
+}

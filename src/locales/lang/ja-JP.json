@@ -1,0 +1,44 @@
+{
+  "nav": {
+    "home": "出会い",
+    "biography": "軌跡",
+    "music": "楽府",
+    "concerts": "雅集",
+    "contact": "お問い合わせ"
+  },
+  "home": {
+    "spring": {
+      "title": "初春の序曲、佳音が鳴り響く",
+      "subtitle": "クラシックを聴きながら、音楽の約束に応える"
+    },
+    "summer": {
+      "title": "夏の夜空に輝く星々、佳音は夢のよう",
+      "subtitle": "クラシックを聴きながら、一夜の星河と蝉時雨を楽しむ"
+    },
+    "autumn": {
+      "title": "金秋の爽やかさ、佳音は醇酒のよう",
+      "subtitle": "クラシックを聴きながら、金桂の香りを一口ごと味わう"
+    },
+    "winter": {
+      "title": "銀世界に包まれ、佳音は詩のよう",
+      "subtitle": "クラシックを聴きながら、梨の花が咲いたように見える雪景色を楽しむ"
+    }
+  },
+  "footer": {
+    "aria_label": "ウェブサイトのフッター",
+    "social": {
+      "weixin": "WeChat",
+      "weibo": "Sina Weibo",
+      "youtube": "YouTube",
+      "xiaohongshu": "XiaoHongShu",
+      "douyin": "TikTok",
+      "weixin_aria": "公式WeChatアカウントを訪問",
+      "weibo_aria": "Sina Weiboプロフィールを訪問",
+      "youtube_aria": "YouTubeチャンネルを訪問",
+      "xiaohongshu_aria": "XiaoHongShuプロフィールを訪問",
+      "douyin_aria": "TikTokプロフィールを訪問"
+    },
+    "copyright_holder": "陳佳",
+    "copyright_text": "全著作権所有。"
+  }
+}

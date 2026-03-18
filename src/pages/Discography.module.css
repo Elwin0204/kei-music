@@ -1,0 +1,71 @@
+/* Discography.module.css */
+
+/**
+ * 更新波浪动画：上下波动
+ */
+
+/* 1. 脉动动画 (Pulse) - 适用于封面和CD图标 */
+.pulse {
+  animation: pulseAnimation 3s ease-in-out infinite;
+}
+
+@keyframes pulseAnimation {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.015); }
+}
+
+/* 2. 浮动动画 (Float) - 适用于数据卡片 */
+.float {
+  animation: floatAnimation 4s ease-in-out infinite;
+}
+
+@keyframes floatAnimation {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-3px); }
+}
+
+/* 3. 波浪上下波动动画 (Wave Bounce) */
+.waveBounce {
+  animation: waveBounceAnimation 6s ease-in-out infinite;
+  /* 为了让波浪的起伏更明显，可以稍微增加它的高度 */
+  transform-origin: center bottom; 
+}
+
+@keyframes waveBounceAnimation {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); } /* 调整这个值来控制起伏幅度 */
+}
+
+/* 自定义动画：底部装饰线从中心向两侧展开 */
+.growHorizontalFromCenter {
+  width: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  animation: growLine 0.8s forwards ease-in-out;
+}
+
+@keyframes growLine {
+  from {
+    width: 0;
+  }
+  to {
+    width: 100%;
+  }
+}
+
+/* 自定义动画：底部装饰线从中心向两侧展开 */
+.growHorizontalFromCenter {
+  width: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  animation: growLine 0.8s forwards ease-in-out;
+}
+
+@keyframes growLine {
+  from {
+    width: 0;
+  }
+  to {
+    width: 100%;
+  }
+}
