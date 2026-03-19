@@ -36,16 +36,6 @@ export const VinylPlayer: React.FC<VinylPlayerProps> = ({
 
   const rotationDuration = `${(60 / rpm) * 60}s`;
 
-  // const handleTogglePlay = () => {
-  //   if (onPlayPause) {
-  //     onPlayPause(!externalIsPlaying);
-  //   } else {
-  //     setInternalIsPlaying(prev => !prev);
-  //   }
-  // };
-
-  // const playPauseText = isCurrentlyPlaying ? 'Pause' : 'Play';
-
   const vinylRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {

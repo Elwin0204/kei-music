@@ -1,6 +1,7 @@
 declare global {
   interface AppSettings {
     apiBaseUrl: string;
+    buildDir: string;
   }
 
   // 定义全局使用的主题类型

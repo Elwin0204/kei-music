@@ -5,7 +5,7 @@ import { cn } from '@/utils'
 import { timelineData } from '@/features/biography/data'
 import type { TimelineSection } from '@/features/biography/types'
 import styles from './Biography.module.css'
-import { KeiIcon } from '@/components/ui/kei-icon'
+import { KeiIcon, KeiIconName } from '@/components/ui/kei-icon'
 
 /**
  * 生平事迹页：垂直时间轴叙事
@@ -17,6 +17,23 @@ import { KeiIcon } from '@/components/ui/kei-icon'
 export const Biography: FC = () => {
   // 提取所有年份用于导航
   const years = timelineData.map(section => section.year)
+  const musicSymbolNames: KeiIconName[] = [
+    'MusicClefTreble',
+    'MusicClefBass',
+    'MusicClefAlto',
+    'MusicWholeNote',
+    'MusicHalfNote',
+    'MusicQuarterNote',
+    'MusicEighthNote',
+    'MusicSixteenthNote',
+    'MusicThirtySecondNote',
+    'MusicHalfNoteDotted',
+    'MusicQuarterNoteDotted',
+    'MusicRhythmTwoEight',
+    'MusicRhythmThree',
+    'MusicRhythmEightSixteen',
+    'MusicRhythmFourSixteen',
+  ];
 
   return (
     <>
@@ -91,8 +108,22 @@ export const Biography: FC = () => {
             </header>
 
             <div className="relative">
-              {/* 时间轴线 - 也可以考虑使用 primary 变量 */}
-              <div className="absolute left-1/2 transform -translate-x-1/2 h-full w-0.5 md:w-1 bg-gradient-to-b from-primary/30 via-primary/50 to-primary/70 hidden md:block z-0"></div>
+              {/* 竖直五线谱样式的背景 */}
+              <div className="absolute left-1/2 transform -translate-x-1/2 w-12 h-full hidden md:block z-0">
+                {/* 五条平行线 */}
+                {[...Array(5)].map((_, i) => (
+                  <div
+                    key={i}
+                    className="absolute bg-staff-muted"
+                    style={{
+                      left: `${i * 25}%`,
+                      width: '1px',
+                      height: '100%',
+                      clipPath: 'inset(0 0 0 0 round 1px)',
+                    }}
+                  ></div>
+                ))}
+              </div>
 
               {/* 时间轴内容 */}
               <div className="space-y-12 md:space-y-16 relative z-10">
@@ -111,33 +142,41 @@ export const Biography: FC = () => {
 
                     {/* 事件列表 - 优化移动端样式 */}
                     <div className="space-y-8 md:space-y-16"> {/* 移动端间距稍微调整 */}
-                      {section.events.map((event, eventIndex) => (
+                      {section.events.map((event, eventIndex) => {
+                        const symbolName = musicSymbolNames[eventIndex % musicSymbolNames.length];
+                        return (
                         <div
                           key={`${section.year}-${eventIndex}`}
                           className={cn(
-                            "flex flex-col items-center md:flex-row md:items-center",
+                            "flex flex-col items-center md:flex-row md:items-center relative",
                             eventIndex % 2 === 0 ? "md:flex-row-reverse" : ""
                           )}
                         >
-                          {/* 图片容器 - 移动端全宽，保留基础样式 */}
-                          <div className="w-full mb-2 md:mb-0 md:w-2/5 flex justify-center">
-                            <div className="overflow-hidden rounded shadow-sm w-full h-32 md:h-48 lg:h-64">
-                              <img
-                                src={event.image}
-                                alt={event.alt}
-                                className="w-full h-full object-cover"
-                                loading="lazy"
-                              />
+                          {/* 图标区域 - 放置在中间顶部 */}
+                          <div className="absolute -top-6 left-1/2 transform -translate-x-1/2">
+                            <div className="w-12 h-12 rounded-full rotate-90 flex items-center justify-center z-10">
+                              <KeiIcon name={symbolName} size={48} className="shrink-0" />
                             </div>
+                          </div>
+                          {/* 图片容器 - 移动端全宽，保留基础样式 */}
+                          <div className={cn("w-full mb-2 md:mb-0 md:w-1/2 flex justify-center", eventIndex % 2 === 0 ? "md:pl-12" : "md:pr-12")}>
+                              <div className="overflow-hidden rounded shadow-sm w-full h-auto">
+                                  <img
+                                      src={event.image}
+                                      alt={event.alt}
+                                      className="w-full object-contain"
+                                      loading="lazy"
+                                  />
+                              </div>
                           </div>
 
                           {/* 描述文本 - 移动端直接显示，无卡片包裹，移除背景色 */}
-                          <div className="w-full md:w-3/5 px-1 md:px-4 lg:px-8 mt-2 md:mt-0">
+                          <div className={cn("w-full md:w-1/2", eventIndex % 2 === 0 ? "md:pr-12" : "md:pl-12")}>
                             {/* 文本颜色 */}
                             <p className="text-sm md:text-base text-foreground leading-relaxed">{event.description}</p>
                           </div>
-                        </div>
-                      ))}
+                        </div>)
+                      })}
                     </div>
                   </section>
                 ))}

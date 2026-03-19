@@ -16,6 +16,21 @@ import { WeChat } from './WeChat';
 import { Weibo } from './Weibo';
 import { XiaoHongShu } from './XiaoHongShu';
 import { YouTube } from './YouTube';
+import { MusicClefTreble } from './MusicClefTreble';
+import { MusicClefBass } from './MusicClefBass';
+import { MusicClefAlto } from './MusicClefAlto';
+import { MusicWholeNote } from './MusicWholeNote';
+import { MusicHalfNote } from './MusicHalfNote';
+import { MusicQuarterNote } from './MusicQuarterNote';
+import { MusicEighthNote } from './MusicEighthNote';
+import { MusicSixteenthNote } from './MusicSixteenthNote';
+import { MusicThirtySecondNote } from './MusicThirtySecondNote';
+import { MusicHalfNoteDotted } from './MusicHalfNoteDotted';
+import { MusicQuarterNoteDotted } from './MusicQuarterNoteDotted';
+import { MusicRhythmTwoEight } from './MusicRhythmTwoEight';
+import { MusicRhythmThree } from './MusicRhythmThree';
+import { MusicRhythmEightSixteen } from './MusicRhythmEightSixteen';
+import { MusicRhythmFourSixteen } from './MusicRhythmFourSixteen';
 
 export const ICON_MAP = {
   KeiLogo,
@@ -36,6 +51,21 @@ export const ICON_MAP = {
   Douyin,
   YouTube,
   AlarmClock,
+  MusicClefTreble,
+  MusicClefBass,
+  MusicClefAlto,
+  MusicWholeNote,
+  MusicHalfNote,
+  MusicQuarterNote,
+  MusicEighthNote,
+  MusicSixteenthNote,
+  MusicThirtySecondNote,
+  MusicHalfNoteDotted,
+  MusicQuarterNoteDotted,
+  MusicRhythmTwoEight,
+  MusicRhythmThree,
+  MusicRhythmEightSixteen,
+  MusicRhythmFourSixteen,
 } as const;
 
 export type KeiIconName = keyof typeof ICON_MAP;

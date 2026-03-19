@@ -7,6 +7,7 @@ import Discography from '@/pages/Discography'
 import Concerts from '@/pages/Concerts'
 import Contact from '@/pages/Contact'
 import NotFound from '@/pages/NotFound'
+import appDefaults from './settings'
 
 /**
  * 应用路由配置
@@ -44,4 +45,6 @@ export const router = createBrowserRouter([
     path: '*',
     element: <NotFound />,
   }
-])
+], {
+  basename: appDefaults.buildDir,
+})

@@ -7,12 +7,12 @@ export const timelineData: TimelineSection[] = [
     events: [
       {
         description: "三岁起学习钢琴，师从中央音乐学院吴元教授，接受严格的古典音乐教育，十岁考入中央音乐学院附小钢琴系。",
-        image: "https://i.imgs.ovh/2026/03/18/O6f8yr.jpeg",
+        image: "https://i.imgs.ovh/2026/03/19/O8J3UA.jpeg",
         alt: "陈佳早年学习钢琴"
       },
       {
         description: "十一岁考入享誉世界的中国交响乐团附属少年及女子合唱团（现“北京爱乐合唱团”），师从指挥大师杨鸿年教授。在团十年期间，作为核心合唱团员和部分曲目钢琴伴奏多次出访美国、日本、意大利及港澳台地区，参加各类专场音乐会及国家级演出任务数百场。",
-        image: "https://i.imgs.ovh/2026/03/18/O6f8yr.jpeg",
+        image: "https://i.imgs.ovh/2026/03/19/O8JNQN.jpeg",
         alt: "陈佳在合唱团演出"
       },
       {
