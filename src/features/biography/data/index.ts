@@ -11,7 +11,7 @@ export const timelineData: TimelineSection[] = [
         alt: "陈佳早年学习钢琴"
       },
       {
-        description: "十一岁考入享誉世界的中国交响乐团附属少年及女子合唱团（现“北京爱乐合唱团”），师从指挥大师杨鸿年教授。在团十年期间，作为核心合唱团员和部分曲目钢琴伴奏多次出访美国、日本、意大利及港澳台地区，参加各类专场音乐会及国家级演出任务数百场。",
+        description: "十一岁考入世界七大童声合唱团之一的中国交响乐团附属少年及女子合唱团（现“北京爱乐合唱团”），师从指挥大师杨鸿年教授。在团十年期间，作为核心合唱团员和部分曲目钢琴伴奏多次出访美国、日本、意大利及港澳台地区，参加各类专场音乐会及国家级演出任务数百场。",
         image: "https://i.imgs.ovh/2026/03/19/O8JNQN.jpeg",
         alt: "陈佳在合唱团演出"
       },
@@ -32,11 +32,11 @@ export const timelineData: TimelineSection[] = [
       },
       {
         description: "2011年出差时在酒店房间开了一个长达一个半小时的网上个人演唱会，纪念邓丽君逝世16周年，视频辗转被邓丽君的三哥邓长富发现，惊讶于她神似邓丽君的声线，进而联系了她，希望她能替邓丽君完成未完成的作品并从事传承邓丽君歌曲文化的工作。",
-        image: "https://i.imgs.ovh/2026/03/18/O6f8yr.jpeg",
+        image: "https://i.imgs.ovh/2026/03/20/OsrwYN.jpeg",
         alt: "纪念邓丽君逝世16周年,被邓丽君的三哥邓长富发现"
       },
       {
-        description: "2012年，在考虑了一年多后，最终放弃高薪又隐定的金融工作去完成偶像未完成的事业，推出首张专辑《樱花之旅》。",
+        description: "2012年，在考虑了一年多后，最终放弃高薪又隐定的金融工作去完成偶像未完成的音乐事业，推出首张专辑《樱花之旅》。",
         image: "https://i.imgs.ovh/2026/03/18/O6f8yr.jpeg",
         alt: "陈佳首张专辑《樱花之旅》封面"
       },
@@ -52,7 +52,7 @@ export const timelineData: TimelineSection[] = [
       },
       {
         description: "演唱了武侠剧《天龙八部》的原声插曲《春花秋月何时了》。",
-        image: "https://i.imgs.ovh/2026/03/18/O6f8yr.jpeg",
+        image: "https://i.imgs.ovh/2026/03/20/OsrQTg.jpeg",
         alt: "《天龙八部》电视剧画面"
       },
       {

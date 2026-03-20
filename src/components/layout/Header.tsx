@@ -10,6 +10,7 @@ import { useLocation } from 'react-router'
 import { LanguageToggle } from './components/LanguageToggle'
 import { BackButton } from '../ui/back-button';
 import { useAppContext } from '../AppProvider'
+import { MusicToggle } from './components/MusicToggle'
 
 export const Header: FC = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
@@ -89,6 +90,7 @@ export const Header: FC = () => {
 
         {/* PC 端新增语言切换按钮，主题切换按钮，移动端隐藏 */}
         <div className="hidden md:flex items-center space-x-2">
+          <MusicToggle />
           <LanguageToggle />
           <ThemeToggle />
         </div>

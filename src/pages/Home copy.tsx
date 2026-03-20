@@ -10,17 +10,6 @@ import { useAppContext } from '@/components/AppProvider';
 // 从 hooks 目录引入 hook
 import { useSeason } from '@/hooks/useSeason';
 
-// 背景图片
-import bg_pc1 from '@/assets/images/home_bg_pc.jpg';
-import bg_pc2 from '@/assets/images/home_bg_pc1.jpeg';
-import bg_pc3 from '@/assets/images/home_bg_pc2.jpeg';
-import bg_pc4 from '@/assets/images/home_bg_pc3.jpeg';
-
-import bg_mobile1 from '@/assets/images/home_bg_mobile.jpg';
-import bg_mobile2 from '@/assets/images/home_bg_mobile1.jpg';
-import bg_mobile3 from '@/assets/images/home_bg_mobile2.jpg';
-import bg_mobile4 from '@/assets/images/home_bg_mobile3.jpg';
-
 /**
  * Home 页面组件
  *
@@ -42,82 +31,50 @@ export const Home: FC = () => {
     rotationIntervalMs: 5000,
   });
 
-  // 定义PC端和移动端的背景图数组
-  const pcBackgroundImages = [bg_pc1, bg_pc2, bg_pc3, bg_pc4];
-  const mobileBackgroundImages = [bg_mobile1, bg_mobile2, bg_mobile3, bg_mobile4];
-
-  // 确定当前设备使用的图片数组
-  const currentImageArray = window.innerWidth >= 1024 ? pcBackgroundImages : mobileBackgroundImages;
-  const totalImages = currentImageArray.length;
-
-  const [currentIndex, setCurrentIndex] = useState(0);
-  const [nextIndex, setNextIndex] = useState(1);
-  const [isTransitioning, setIsTransitioning] = useState(false);
-
-  // 切换图片的函数
-  const changeImage = () => {
-    if (totalImages <= 1) return; // 如果只有一张图，不切换
-
-    setIsTransitioning(true);
-    // 等待当前动画完成（3000ms）后，更新索引并结束过渡状态
-    setTimeout(() => {
-      setCurrentIndex(nextIndex);
-      setNextIndex(prevIndex => (prevIndex + 1) % totalImages); // 循环到下一索引
-      setIsTransitioning(false);
-    }, 3000); // 此处时长必须与 CSS 动画时长一致 (已更新)
-  };
-
-  // 设置定时器进行自动切换
-  useEffect(() => {
-    const intervalId = setInterval(changeImage, 6000); // 总间隔时间也增加，例如6秒 (动画3秒 + 图片停留3秒)
-    return () => clearInterval(intervalId);
-  }, [nextIndex, totalImages]); // 依赖项包括 nextIndex 和 totalImages，确保在图片数组长度改变时能正确工作
-
-  // 监听窗口大小变化，更新图片数组和索引
-  useEffect(() => {
-    const handleResize = () => {
-      // 重新确定当前数组
-      const newArray = window.innerWidth >= 1024 ? pcBackgroundImages : mobileBackgroundImages;
-      // 如果图片总数改变了，重置索引以防止错误
-      if (newArray.length !== totalImages) {
-        setCurrentIndex(0);
-        setNextIndex(1);
-      }
-    };
-    window.addEventListener('resize', handleResize);
-    return () => window.removeEventListener('resize', handleResize);
-  }, [totalImages]); // totalImages 依赖项确保 effect 在图片总数变化时重新运行
-  // --- End 新增 ---
-
+  // 根据主题计算透明度
   const getVinyOpacity = (t: 'light' | 'dark'): number => {
+    // light 主题下调低透明度，dark 主题下保持不透明
     return t === 'light' ? 0.15 : 0.25;
   };
 
+  // 根据主题计算文字透明度
   const getTextOpacity = (t: 'light' | 'dark'): number => {
-    return t === 'light' ? 0.65 : 0.8;
+    // light 主题下调低透明度以适应亮色背景，dark 主题下可以稍微深一些
+    return t === 'light' ? 0.65 : 0.8; // 主标题透明度
   };
 
+  // 根据主题计算副标题透明度
   const getSubTextOpacity = (t: 'light' | 'dark'): number => {
-    return t === 'light' ? 0.5 : 0.65;
+    // 副标题通常比主标题更淡一些
+    return t === 'light' ? 0.5 : 0.65; // 副标题透明度
   };
 
+  // 定义一个函数来根据屏幕高度计算 vinySize
   const calculateVinySize = (height: number): number => {
+    // 基准：1080px 高度对应 1920px 大小
     const baseHeight = 1080;
     const baseSize = 1920;
+
+    // 简单的线性比例缩放，基于高度
     let calculatedSize = (height / baseHeight) * baseSize;
+
+    // 限制最小和最大尺寸 (可选)
     const minSize = 256;
     const maxSize = 1024;
     calculatedSize = Math.max(minSize, Math.min(maxSize, calculatedSize));
+
     return Math.round(calculatedSize);
   };
 
   useEffect(() => {
+    // 初始化大小 - 使用 innerHeight
     const initialSize = calculateVinySize(window.innerHeight);
     setCurrentVinySize(initialSize);
 
+    // 定义事件处理函数 - 使用 innerHeight
     const handleResize = () => {
-      const newHeight = window.innerHeight;
-      const newSize = calculateVinySize(newHeight);
+      const newHeight = window.innerHeight; // 获取当前窗口高度
+      const newSize = calculateVinySize(newHeight); // 使用高度计算
       setCurrentVinySize(newSize);
     };
 
@@ -129,6 +86,7 @@ export const Home: FC = () => {
   }, []);
 
 
+  // 动态获取当前季节的标题和副标题
   const currentTitle = t(`home.${currentSeason}.title`);
   const currentSubtitle = t(`home.${currentSeason}.subtitle`);
 
@@ -144,34 +102,14 @@ export const Home: FC = () => {
         <link rel="canonical" href="https://kei-music.com/" />
       </Helmet>
 
-      {/* 背景容器 - 使用两个层进行切换动画 */}
-      <div className="fixed inset-0 -z-10 overflow-hidden">
-        {/* 当前显示的背景图层 */}
-        <div
-          className={cn(
-            "absolute inset-0 bg-cover bg-center bg-no-repeat",
-            isTransitioning ? styles.fadeTransition : '' // <-- 更新了类名
-          )}
-          style={{
-            backgroundImage: `url(${currentImageArray[currentIndex]})`,
-            opacity: isTransitioning ? 0 : 'var(--home-bg-opacity)',
-          }}
-        />
-        {/* 即将显示的下一张背景图层 */}
-        <div
-          className={cn(
-            "absolute inset-0 bg-cover bg-center bg-no-repeat",
-            isTransitioning ? styles.fadeIn : ''
-          )}
-          style={{
-            backgroundImage: `url(${currentImageArray[nextIndex]})`,
-            opacity: isTransitioning ? 'var(--home-bg-opacity)' : 0,
-          }}
-        />
-      </div>
+      {/* 背景容器 */}
+      <div 
+        className={cn("fixed inset-0 -z-10", styles.homeBackground)}
+      />
 
       {/* 主要内容容器 */}
       <div className="relative min-h-screen flex flex-col lg:flex-row overflow-hidden">
+        {/* 左侧内容区 */}
         <div className="flex-1 flex flex-col justify-center items-center gap-8 p-8">
           <div className="hidden md:flex flex-col gap-4 w-full max-w-2xl mx-auto px-4">
             <h1 className="relative">
@@ -189,15 +127,17 @@ export const Home: FC = () => {
               </p>
             </h1>
           </div>
+          {/* 移动端黑胶 - 显示在文字下方，正中间 */}
           <div className="lg:hidden flex justify-center">
             <VinylPlayer
               className="w-32 h-32"
               vinySize={300}
-              vinyOpacity={getVinyOpacity(theme)}
+              vinyOpacity={getVinyOpacity(theme)} // 根据主题传递透明度
             />
           </div>
         </div>
 
+        {/* 右侧容器，作为黑胶的定位上下文 */}
         <div className="hidden lg:block lg:w-1/2 relative" style={{ height: `${currentVinySize}px` }}>
           <div className="absolute top-1/2 right-0 transform -translate-y-1/2 translate-x-1/2 z-10">
             <VinylPlayer

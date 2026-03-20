@@ -5,13 +5,16 @@ import { Toaster } from 'sonner'
 
 import { router } from '@/router'
 import { AppProvider } from './components/AppProvider'
+import { AudioProvider } from './components/AudioProvider'
 
 export default function App() {
   return (
     <HelmetProvider>
       <AppProvider>
-        <RouterProvider router={router} />
-        <Toaster />
+        <AudioProvider>
+          <RouterProvider router={router} />
+          <Toaster />
+        </AudioProvider>
       </AppProvider>
     </HelmetProvider>
   )

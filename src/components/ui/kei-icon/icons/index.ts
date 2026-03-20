@@ -31,6 +31,8 @@ import { MusicRhythmTwoEight } from './MusicRhythmTwoEight';
 import { MusicRhythmThree } from './MusicRhythmThree';
 import { MusicRhythmEightSixteen } from './MusicRhythmEightSixteen';
 import { MusicRhythmFourSixteen } from './MusicRhythmFourSixteen';
+import { Play } from './Play';
+import { Pause } from './Pause';
 
 export const ICON_MAP = {
   KeiLogo,
@@ -66,6 +68,8 @@ export const ICON_MAP = {
   MusicRhythmThree,
   MusicRhythmEightSixteen,
   MusicRhythmFourSixteen,
+  Play,
+  Pause,
 } as const;
 
 export type KeiIconName = keyof typeof ICON_MAP;
