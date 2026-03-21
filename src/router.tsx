@@ -4,6 +4,7 @@ import MainLayout from '@/components/layout/MainLayout'
 import Home from '@/pages/Home'
 import Biography from '@/pages/Biography'
 import Discography from '@/pages/Discography'
+import Journal from './pages/Journal'
 import Concerts from '@/pages/Concerts'
 import Contact from '@/pages/Contact'
 import NotFound from '@/pages/NotFound'
@@ -30,6 +31,10 @@ export const router = createBrowserRouter([
       {
         path: 'music',
         element: <Discography />,
+      },
+      {
+        path: 'journal',
+        element: <Journal />,
       },
       {
         path: 'concerts',

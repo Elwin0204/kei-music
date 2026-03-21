@@ -33,13 +33,17 @@ import { MusicRhythmEightSixteen } from './MusicRhythmEightSixteen';
 import { MusicRhythmFourSixteen } from './MusicRhythmFourSixteen';
 import { Play } from './Play';
 import { Pause } from './Pause';
+import { FeatherPen } from './FeatherPen';
+import { Hourglass } from './Hourglass';
 
 export const ICON_MAP = {
   KeiLogo,
   VinylRecord,
   Biography,
   Music,
+  FeatherPen,
   Concert,
+  Hourglass,
   Contact,
   Moon,
   Sun,

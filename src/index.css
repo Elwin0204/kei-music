@@ -53,7 +53,7 @@ html {
   --sidebar-ring: #B57EDC;
 
   /* Home */
-  --home-bg-opacity: 0.7;
+  --home-bg-opacity: 0.8;
 
   /* --- 新增：五线谱颜色 --- */
   --staff: #B57EDC; /* 浅色模式下使用薰衣草紫 */

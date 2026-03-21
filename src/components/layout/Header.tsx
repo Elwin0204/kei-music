@@ -36,8 +36,9 @@ export const Header: FC = () => {
 
   // 使用翻译函数动态生成导航项
   const navItems: NavItem[] = [
-    { label: '生平', value: 'biography',  path: '/biography', icon: 'Biography' },
+    { label: '生平', value: 'biography',  path: '/biography', icon: 'Hourglass' },
     { label: '作品', value: 'music', path: '/music', icon: 'Music' },
+    { label: '佳话', value: 'journal', path: '/journal', icon: 'FeatherPen' },
     { label: '演唱会', value: 'concerts', path: '/concerts', icon: 'Concert' },
     { label: '联系', value: 'contact', path: '/contact', icon: 'Contact' },
   ]

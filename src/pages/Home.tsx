@@ -20,6 +20,8 @@ import bg_mobile2 from '@/assets/images/home_bg_mobile2.jpg';
 import bg_mobile3 from '@/assets/images/home_bg_mobile3.jpg';
 import bg_mobile4 from '@/assets/images/home_bg_mobile4.jpg';
 
+import bg_magnolia from '@/assets/images/home_bg_magnolia.png';
+
 export const Home: FC = () => {
   // 使用 useRef 来存储初始计算的尺寸
   const initialCalculatedSizeRef = useRef<number | null>(null);
@@ -153,6 +155,14 @@ export const Home: FC = () => {
             opacity: isTransitioning ? 'var(--home-bg-opacity)' : 0,
           }}
         />
+        {/* 玉兰花叠加层 - 放置在背景之上 */}
+        <div className="absolute top-0 left-0 w-full h-full pointer-events-none">
+          <img
+            src={ bg_magnolia }
+            alt="玉兰花"
+            className="absolute top-16 left-0 h-full opacity-70"
+          />
+        </div>
       </div>
 
       <div className="relative min-h-screen flex flex-col lg:flex-row overflow-hidden">
