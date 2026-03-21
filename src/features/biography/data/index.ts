@@ -162,7 +162,7 @@ export const timelineData: TimelineSection[] = [
       },
       {
         description: "2月11日，在日本三岛町参加“雪と火の祭り- テレサ・テン来町40周年”纪念文化节，现场演唱了歌曲《小村之恋》等。",
-        image: "https://i.imgs.ovh/2026/03/18/O6f8yr.jpeg",
+        image: "https://i.imgs.ovh/2026/03/21/O97uqd.jpeg",
         alt: "日本三岛町文化节"
       },
       {
@@ -357,8 +357,8 @@ export const timelineData: TimelineSection[] = [
       },
       {
         description: "10月15日，推出个人第17张专辑《海海人生》。",
-        image: "https://i.imgs.ovh/2026/03/18/O6f8yr.jpeg",
-        alt: "专辑《海海人生》封面"
+        image: "https://i.imgs.ovh/2026/03/21/O9CZEh.jpeg",
+        alt: "《海海人生》专辑发布直播"
       },
     ]
   },

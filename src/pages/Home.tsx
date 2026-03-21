@@ -1,40 +1,31 @@
-// src/pages/Home.tsx
 import type { FC } from 'react'
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react'; // 导入 useRef
 import { Helmet } from 'react-helmet-async'
 import { VinylPlayer } from '@/components/ui/vinyl-player';
 import styles from './Home.module.css';
 import { cn } from '@/utils';
 import { useAppContext } from '@/components/AppProvider';
 
-// 从 hooks 目录引入 hook
 import { useSeason } from '@/hooks/useSeason';
 
-// 背景图片
-import bg_pc1 from '@/assets/images/home_bg_pc.jpg';
-import bg_pc2 from '@/assets/images/home_bg_pc1.jpeg';
-import bg_pc3 from '@/assets/images/home_bg_pc2.jpeg';
-import bg_pc4 from '@/assets/images/home_bg_pc3.jpeg';
+import bg_pc from '@/assets/images/home_bg_pc.jpg';
+import bg_pc1 from '@/assets/images/home_bg_pc1.jpg';
+import bg_pc2 from '@/assets/images/home_bg_pc2.jpg';
+import bg_pc3 from '@/assets/images/home_bg_pc3.jpg';
+import bg_pc4 from '@/assets/images/home_bg_pc4.jpg';
 
-import bg_mobile1 from '@/assets/images/home_bg_mobile.jpg';
-import bg_mobile2 from '@/assets/images/home_bg_mobile1.jpg';
-import bg_mobile3 from '@/assets/images/home_bg_mobile2.jpg';
-import bg_mobile4 from '@/assets/images/home_bg_mobile3.jpg';
+import bg_mobile from '@/assets/images/home_bg_mobile.jpg';
+import bg_mobile1 from '@/assets/images/home_bg_mobile1.jpg';
+import bg_mobile2 from '@/assets/images/home_bg_mobile2.jpg';
+import bg_mobile3 from '@/assets/images/home_bg_mobile3.jpg';
+import bg_mobile4 from '@/assets/images/home_bg_mobile4.jpg';
 
-/**
- * Home 页面组件
- *
- * 网站的首页，旨在提供一个全屏沉浸式的用户体验。
- * 特点：
- * - SEO 优化：使用 react-helmet-async 设置页面标题、描述等元数据。
- * - 视觉焦点：采用全屏背景图片，营造沉浸感。
- * - 内容展示：包含欢迎信息、核心标语等。
- * - 结构清晰：将背景层和内容层分离，确保内容可读性和布局稳定性。
- * - 响应式设计：利用 Tailwind CSS 实现基本的响应式布局。
- * - 多语言与季节主题：根据当前日期自动切换多语言和季节主题文案。
- */
 export const Home: FC = () => {
-  const [currentVinySize, setCurrentVinySize] = useState(375);
+  // 使用 useRef 来存储初始计算的尺寸
+  const initialCalculatedSizeRef = useRef<number | null>(null);
+
+  // 将初始状态设置为 null 或一个合理的默认值，然后在 effect 中更新
+  const [currentVinySize, setCurrentVinySize] = useState<number | null>(null); 
   const { theme, t } = useAppContext();
 
   const { currentSeason } = useSeason({
@@ -42,11 +33,9 @@ export const Home: FC = () => {
     rotationIntervalMs: 5000,
   });
 
-  // 定义PC端和移动端的背景图数组
-  const pcBackgroundImages = [bg_pc1, bg_pc2, bg_pc3, bg_pc4];
-  const mobileBackgroundImages = [bg_mobile1, bg_mobile2, bg_mobile3, bg_mobile4];
+  const pcBackgroundImages = [bg_pc, bg_pc1, bg_pc2, bg_pc3, bg_pc4];
+  const mobileBackgroundImages = [bg_mobile, bg_mobile1, bg_mobile2, bg_mobile3, bg_mobile4];
 
-  // 确定当前设备使用的图片数组
   const currentImageArray = window.innerWidth >= 1024 ? pcBackgroundImages : mobileBackgroundImages;
   const totalImages = currentImageArray.length;
 
@@ -54,31 +43,25 @@ export const Home: FC = () => {
   const [nextIndex, setNextIndex] = useState(1);
   const [isTransitioning, setIsTransitioning] = useState(false);
 
-  // 切换图片的函数
   const changeImage = () => {
-    if (totalImages <= 1) return; // 如果只有一张图，不切换
+    if (totalImages <= 1) return;
 
     setIsTransitioning(true);
-    // 等待当前动画完成（3000ms）后，更新索引并结束过渡状态
     setTimeout(() => {
       setCurrentIndex(nextIndex);
-      setNextIndex(prevIndex => (prevIndex + 1) % totalImages); // 循环到下一索引
+      setNextIndex(prevIndex => (prevIndex + 1) % totalImages);
       setIsTransitioning(false);
-    }, 3000); // 此处时长必须与 CSS 动画时长一致 (已更新)
+    }, 3000);
   };
 
-  // 设置定时器进行自动切换
   useEffect(() => {
-    const intervalId = setInterval(changeImage, 6000); // 总间隔时间也增加，例如6秒 (动画3秒 + 图片停留3秒)
+    const intervalId = setInterval(changeImage, 6000);
     return () => clearInterval(intervalId);
-  }, [nextIndex, totalImages]); // 依赖项包括 nextIndex 和 totalImages，确保在图片数组长度改变时能正确工作
+  }, [nextIndex, totalImages]);
 
-  // 监听窗口大小变化，更新图片数组和索引
   useEffect(() => {
     const handleResize = () => {
-      // 重新确定当前数组
       const newArray = window.innerWidth >= 1024 ? pcBackgroundImages : mobileBackgroundImages;
-      // 如果图片总数改变了，重置索引以防止错误
       if (newArray.length !== totalImages) {
         setCurrentIndex(0);
         setNextIndex(1);
@@ -86,8 +69,7 @@ export const Home: FC = () => {
     };
     window.addEventListener('resize', handleResize);
     return () => window.removeEventListener('resize', handleResize);
-  }, [totalImages]); // totalImages 依赖项确保 effect 在图片总数变化时重新运行
-  // --- End 新增 ---
+  }, [totalImages]);
 
   const getVinyOpacity = (t: 'light' | 'dark'): number => {
     return t === 'light' ? 0.15 : 0.25;
@@ -111,14 +93,20 @@ export const Home: FC = () => {
     return Math.round(calculatedSize);
   };
 
+  // 修正后的尺寸计算和更新逻辑
   useEffect(() => {
-    const initialSize = calculateVinySize(window.innerHeight);
-    setCurrentVinySize(initialSize);
+    // 只在组件挂载时执行一次
+    if (initialCalculatedSizeRef.current === null) {
+      // 计算初始尺寸并存储在 ref 中
+      initialCalculatedSizeRef.current = calculateVinySize(window.innerHeight);
+      // 然后设置状态
+      setCurrentVinySize(initialCalculatedSizeRef.current);
+    }
 
     const handleResize = () => {
       const newHeight = window.innerHeight;
       const newSize = calculateVinySize(newHeight);
-      setCurrentVinySize(newSize);
+      setCurrentVinySize(newSize); // 响应式更新
     };
 
     window.addEventListener('resize', handleResize);
@@ -126,7 +114,7 @@ export const Home: FC = () => {
     return () => {
       window.removeEventListener('resize', handleResize);
     };
-  }, []);
+  }, []); // 依赖数组为空，确保此 effect 只在挂载和卸载时运行
 
 
   const currentTitle = t(`home.${currentSeason}.title`);
@@ -144,20 +132,17 @@ export const Home: FC = () => {
         <link rel="canonical" href="https://kei-music.com/" />
       </Helmet>
 
-      {/* 背景容器 - 使用两个层进行切换动画 */}
       <div className="fixed inset-0 -z-10 overflow-hidden">
-        {/* 当前显示的背景图层 */}
         <div
           className={cn(
             "absolute inset-0 bg-cover bg-center bg-no-repeat",
-            isTransitioning ? styles.fadeTransition : '' // <-- 更新了类名
+            isTransitioning ? styles.fadeTransition : ''
           )}
           style={{
             backgroundImage: `url(${currentImageArray[currentIndex]})`,
             opacity: isTransitioning ? 0 : 'var(--home-bg-opacity)',
           }}
         />
-        {/* 即将显示的下一张背景图层 */}
         <div
           className={cn(
             "absolute inset-0 bg-cover bg-center bg-no-repeat",
@@ -170,7 +155,6 @@ export const Home: FC = () => {
         />
       </div>
 
-      {/* 主要内容容器 */}
       <div className="relative min-h-screen flex flex-col lg:flex-row overflow-hidden">
         <div className="flex-1 flex flex-col justify-center items-center gap-8 p-8">
           <div className="hidden md:flex flex-col gap-4 w-full max-w-2xl mx-auto px-4">
@@ -190,21 +174,27 @@ export const Home: FC = () => {
             </h1>
           </div>
           <div className="lg:hidden flex justify-center">
-            <VinylPlayer
-              className="w-32 h-32"
-              vinySize={300}
-              vinyOpacity={getVinyOpacity(theme)}
-            />
+            {/* 添加条件渲染，避免在 size 为 null 时传递 */}
+            {currentVinySize !== null && (
+              <VinylPlayer
+                className="w-32 h-32"
+                vinySize={300}
+                vinyOpacity={getVinyOpacity(theme)}
+              />
+            )}
           </div>
         </div>
 
-        <div className="hidden lg:block lg:w-1/2 relative" style={{ height: `${currentVinySize}px` }}>
+        <div className="hidden lg:block lg:w-1/2 relative" style={{ height: `${currentVinySize !== null ? currentVinySize : '500'}px` }}> {/* 提供一个默认高度 */}
           <div className="absolute top-1/2 right-0 transform -translate-y-1/2 translate-x-1/2 z-10">
-            <VinylPlayer
-              className="w-full h-full"
-              vinySize={currentVinySize}
-              vinyOpacity={getVinyOpacity(theme)}
-            />
+            {/* 添加条件渲染，避免在 size 为 null 时传递 */}
+            {currentVinySize !== null && (
+              <VinylPlayer
+                className="w-full h-full"
+                vinySize={currentVinySize}
+                vinyOpacity={getVinyOpacity(theme)}
+              />
+            )}
           </div>
         </div>
       </div>
