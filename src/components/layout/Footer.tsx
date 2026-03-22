@@ -11,35 +11,35 @@ export const Footer: FC = () => {
     {
       id: 'douyin',
       label: t('footer.social.douyin', 'Douyin'),
-      url: 'https://v.douyin.com/your_douyin_id/',
+      url: 'https://v.douyin.com/qOMEhnrhoc8/',
       ariaLabel: t('footer.social.douyin_aria', 'Visit Douyin Profile'),
       icon: 'Douyin',
     },
     {
       id: 'weixin',
       label: t('footer.social.weixin', 'WeChat'),
-      url: 'https://example.com/wechat',
+      url: 'https://channels.weixin.qq.com/web/pages/home?finderName=sphLHtPmkByauTu',
       ariaLabel: t('footer.social.weixin_aria', 'Visit WeChat Official Account'),
       icon: 'WeChat',
     },
     {
       id: 'weibo',
       label: t('footer.social.weibo', 'Weibo'),
-      url: 'https://www.weibo.com/your_weibo_username',
+      url: 'https://weibo.com/u/3243169603',
       ariaLabel: t('footer.social.weibo_aria', 'Visit Sina Weibo Profile'),
       icon: 'Weibo',
     },
     {
       id: 'xiaohongshu',
       label: t('footer.social.xiaohongshu', 'Xiaohongshu'),
-      url: 'https://www.xiaohongshu.com/user/profile/your_xiaohongshu_id',
+      url: 'https://xhslink.com/m/4RZrd3cNeeg',
       ariaLabel: t('footer.social.xiaohongshu_aria', 'Visit Xiaohongshu Profile'),
       icon: 'XiaoHongShu',
     },
     {
       id: 'youtube',
       label: t('footer.social.youtube', 'YouTube'),
-      url: 'https://www.youtube.com/@your_youtube_channel',
+      url: 'https://youtube.com/@chenjia?si=FNeDqptf5RclWI-T',
       ariaLabel: t('footer.social.youtube_aria', 'Visit YouTube Channel'),
       icon: 'YouTube',
     },
@@ -67,7 +67,7 @@ export const Footer: FC = () => {
                 border border-primary/50 rounded-full
                 text-xs sm:text-sm text-foreground
                 hover:border-primary hover:bg-primary/5 transition-colors
-                focus:outline-none focus:ring-2 focus:ring-primary/50
+                focus:outline-none
                 group
               "
               aria-label={link.ariaLabel}

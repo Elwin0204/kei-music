@@ -513,7 +513,7 @@ export const discographyData: Album[] = [
     streamingLink: '#',
   },
   {
-    id: 'album-2016-04-29',
+    id: 'album2-2016-04-29',
     title: 'Kei 68 国际版',
     coverImage: 'https://i.imgs.ovh/2026/03/17/Okps8h.jpeg',
     releaseDate: '2016-04',

@@ -1,10 +1,11 @@
 // src/components/layout/MainLayout.tsx
-import type { ReactNode } from 'react'
-import { Outlet } from 'react-router'
+import { useEffect, type ReactNode } from 'react'
+import { Outlet, useLocation } from 'react-router'
 import Header from './Header'
 import Footer from './Footer'
 import { ThemeToggle } from './components/ThemeToggle'
 import { LanguageToggle } from './components/LanguageToggle'
+import { MusicToggle } from './components/MusicToggle'
 
 /**
  * 主布局：包裹所有页面
@@ -12,6 +13,17 @@ import { LanguageToggle } from './components/LanguageToggle'
  * - 页面内容通过 <Outlet /> 注入
  */
 export default function MainLayout({ children }: { children?: ReactNode }) {
+  const location = useLocation(); // 获取当前的 location 对象
+
+  useEffect(() => {
+    // 当 location.pathname 发生变化时，滚动到顶部
+    window.scrollTo({
+      top: 0,
+      left: 0,
+      behavior: 'smooth',
+    });
+  }, [location.pathname]);
+  
   return (
     <>
       <Header />
@@ -20,6 +32,7 @@ export default function MainLayout({ children }: { children?: ReactNode }) {
 
         {/* 移动端工具栏 */}
         <div className="fixed bottom-4 right-4 z-40 md:hidden flex flex-col items-end space-y-2">
+          <MusicToggle />
           <LanguageToggle />
           <ThemeToggle />
         </div>

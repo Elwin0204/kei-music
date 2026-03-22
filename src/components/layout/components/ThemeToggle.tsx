@@ -2,7 +2,6 @@
 import { KeiIcon } from '@/components/ui/kei-icon';
 import { cn } from '@/utils';
 import { type FC } from 'react';
-// 从新的 AppProvider 导入 Hook
 import { useAppContext } from '@/components/AppProvider'; 
 
 /**
@@ -15,9 +14,8 @@ import { useAppContext } from '@/components/AppProvider';
  * - 图标切换：根据当前主题状态显示对应的图标 (Sun, Moon, Computer)。
  * - 可定制：允许外部通过 `className` 传入自定义样式。
  */
-interface ThemeToggleProps extends React.HTMLAttributes<HTMLButtonElement> {}
 
-export const ThemeToggle: FC<ThemeToggleProps> = ({ className, ...props }) => {
+export const ThemeToggle: FC<React.HTMLAttributes<HTMLButtonElement>> = ({ className, ...props }) => {
   // 从 AppProvider 获取状态和方法
   const { theme: currentTheme, setTheme } = useAppContext();
 

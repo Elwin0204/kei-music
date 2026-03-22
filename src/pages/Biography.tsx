@@ -153,21 +153,21 @@ export const Biography: FC = () => {
                           )}
                         >
                           {/* 图标区域 - 放置在中间顶部 */}
-                          <div className="absolute -top-6 left-1/2 transform -translate-x-1/2">
+                          <div className="hidden md:block absolute -top-6 left-1/2 transform -translate-x-1/2">
                             <div className="w-12 h-12 rounded-full rotate-90 flex items-center justify-center z-10">
                               <KeiIcon name={symbolName} size={48} className="shrink-0" />
                             </div>
                           </div>
                           {/* 图片容器 - 移动端全宽，保留基础样式 */}
                           <div className={cn("w-full mb-2 md:mb-0 md:w-1/2 flex justify-center", eventIndex % 2 === 0 ? "md:pl-12" : "md:pr-12")}>
-                              <div className="overflow-hidden rounded shadow-sm w-full h-auto">
-                                  <img
-                                      src={event.image}
-                                      alt={event.alt}
-                                      className="w-full object-contain"
-                                      loading="lazy"
-                                  />
-                              </div>
+                            <div className="overflow-hidden rounded shadow-sm w-full h-auto">
+                              <img
+                                src={event.image}
+                                alt={event.alt}
+                                className="w-full object-contain"
+                                loading="lazy"
+                              />
+                            </div>
                           </div>
 
                           {/* 描述文本 - 移动端直接显示，无卡片包裹，移除背景色 */}

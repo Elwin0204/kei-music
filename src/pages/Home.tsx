@@ -156,7 +156,7 @@ export const Home: FC = () => {
           }}
         />
         {/* 玉兰花叠加层 - 放置在背景之上 */}
-        <div className="absolute top-0 left-0 w-full h-full pointer-events-none">
+        <div className="hidden md:block absolute top-0 left-0 w-full h-full pointer-events-none">
           <img
             src={ bg_magnolia }
             alt="玉兰花"
