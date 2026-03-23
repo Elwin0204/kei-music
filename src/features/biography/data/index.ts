@@ -47,7 +47,7 @@ export const timelineData: TimelineSection[] = [
     events: [
       {
         description: "受邓丽君的三哥邓长富邀请签约台湾邓丽君文教基金会，并在此后参与了多场文化艺术、教育、音乐推广活动。",
-        image: "https://i.imgs.ovh/2026/03/18/O6f8yr.jpeg",
+        image: "https://i.imgs.ovh/2026/03/23/OQCiQ0.jpeg",
         alt: "陈佳签约邓丽君文教基金会"
       },
       {
@@ -62,7 +62,7 @@ export const timelineData: TimelineSection[] = [
       },
       {
         description: "5月19日，在北京首都体育馆与王菲、张靓颖等共同参加了“巨星耀北京—邓丽君诞辰60周年”演唱会，并现场演唱歌曲《又见炊烟》。",
-        image: "https://i.imgs.ovh/2026/03/18/O6f8yr.jpeg",
+        image: "https://i.imgs.ovh/2026/03/23/OQCNTg.jpeg",
         alt: "北京首都体育馆纪念演唱会"
       },
       {
@@ -82,12 +82,12 @@ export const timelineData: TimelineSection[] = [
       },
       {
         description: "5月11日，受邀参加北京邓丽君歌友会举办的“纪念邓丽君逝世19周年”活动，并演唱了歌曲《四个愿望》《冬之恋情》《小城故事》等。",
-        image: "https://i.imgs.ovh/2026/03/18/O6f8yr.jpeg",
+        image: "https://i.imgs.ovh/2026/03/23/OQy0mY.jpeg",
         alt: "北京邓丽君歌友会活动"
       },
       {
         description: "9月12日，在上海参加“天籁永存两岸亿万歌迷怀念邓丽君”演唱会。",
-        image: "https://i.imgs.ovh/2026/03/18/O6f8yr.jpeg",
+        image: "https://i.imgs.ovh/2026/03/23/OQyy81.jpeg",
         alt: "上海怀念邓丽君演唱会"
       },
     ]
@@ -222,7 +222,7 @@ export const timelineData: TimelineSection[] = [
       },
       {
         description: "9月，受邀参加了中国驻日本大使馆主办的“日本东京China Festival”文化节活动，并现场演唱歌曲《空港》《爱人》《我只在乎你》等。",
-        image: "https://i.imgs.ovh/2026/03/18/O6f8yr.jpeg",
+        image: "https://i.imgs.ovh/2026/03/23/OQy5QX.jpeg",
         alt: "东京China Festival活动"
       },
     ]

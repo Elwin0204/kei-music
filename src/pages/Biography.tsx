@@ -15,6 +15,7 @@ import { KeiIcon, KeiIconName } from '@/components/ui/kei-icon'
  * - 包含年份导航（桌面端侧边，移动端顶部悬浮）
  */
 export const Biography: FC = () => {
+  const canonicalUrl = `https://elwin0204.github.io/kei-music/biography`;
   // 提取所有年份用于导航
   const years = timelineData.map(section => section.year)
   const musicSymbolNames: KeiIconName[] = [
@@ -42,9 +43,11 @@ export const Biography: FC = () => {
         <meta name="description" content="了解歌手陈佳的艺术人生：从加入邓丽君文教基金会到全球巡演的精彩历程。" />
         <meta property="og:title" content="陈佳 · 生平事迹" />
         <meta property="og:description" content="探索陈佳如何成为邓丽君歌曲的最佳传承者之一。" />
-        <meta property="og:image" content="/og/biography.jpg" />
-        <meta property="og:url" content="https://kei-music.com/biography" />
-        <link rel="canonical" href="https://kei-music.com/biography" />
+        <meta property="og:image" content="/og/kei.jpg" />
+        <meta property="og:url" content={canonicalUrl} />
+        <meta property="og:type" content="article" />
+        <meta property="og:site_name" content="陈佳 · 传承经典" />
+        <link rel="canonical" href={canonicalUrl} />
       </Helmet>
 
       {/* 使用项目主题背景色 */}

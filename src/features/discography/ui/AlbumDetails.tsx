@@ -82,15 +82,15 @@ export const AlbumDetails: React.FC<AlbumDetailsProps> = ({ album }) => {
       <div className="border-t border-dashed border-border my-6"></div> {/* 使用 border-border 替代固定颜色 */}
 
       {/* 第二部分：佳佳寄语 */}
-      <section>
+      {/* <section>
         <h3 className={sectionTitleClass}>佳佳寄语</h3>
         <div className="prose prose-sm max-w-none">
           <p className="text-sm text-muted-foreground leading-relaxed text-justify">{album.artist.bio}</p>
         </div>
-      </section>
+      </section> */}
 
       {/* 添加分隔线 - 优化颜色 */}
-      <div className="border-t border-dashed border-border my-6"></div> {/* 使用 border-border 替代固定颜色 */}
+      {/* <div className="border-t border-dashed border-border my-6"></div> */}
 
       {/* 第三部分：曲目列表 - 序号+歌名+虚线+时长 */}
       <section>

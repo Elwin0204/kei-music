@@ -10,6 +10,8 @@ import { Helmet } from 'react-helmet-async'
  * - 演出列表：日期、城市、场馆、购票链接
  */
 export const Concerts: FC = () => {
+  const canonicalUrl = `https://elwin0204.github.io/kei-music/concerts`;
+
   return (
     <>
       <Helmet>
@@ -17,9 +19,11 @@ export const Concerts: FC = () => {
         <meta name="description" content="查看陈佳最新演唱会安排、城市巡演日程及购票信息。" />
         <meta property="og:title" content="陈佳 · 演出活动" />
         <meta property="og:description" content="现场感受陈佳演绎的经典之声，获取最新演出资讯。" />
-        <meta property="og:image" content="/og/concerts.jpg" />
-        <meta property="og:url" content="https://kei-music.com/concerts" />
-        <link rel="canonical" href="https://kei-music.com/concerts" />
+        <meta property="og:image" content="/og/kei.jpg" />
+        <meta property="og:url" content={canonicalUrl} />
+        <meta property="og:type" content="website" />
+        <meta property="og:site_name" content="陈佳 · 传承经典" />
+        <link rel="canonical" href={canonicalUrl} />
       </Helmet>
 
       <div>

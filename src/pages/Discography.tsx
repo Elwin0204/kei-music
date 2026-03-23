@@ -37,7 +37,7 @@ const AnimatedWaveDivider = () => (
 );
 
 export const Discography: FC = () => {
-  
+  const canonicalUrl = `https://elwin0204.github.io/kei-music/discography`;
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedAlbum, setSelectedAlbum] = useState<Album | null>(null);
 
@@ -58,12 +58,14 @@ export const Discography: FC = () => {
     <>
       <Helmet>
         <title>音乐作品 | 陈佳专辑全集</title>
-        <meta name="description" content="陈佳发行专辑全收录：《去年今日》《似是故人来》等经典重现与原创作品试听。" />
+        <meta name="description" content="陈佳发行专辑全收录" />
         <meta property="og:title" content="陈佳 · 音乐作品" />
         <meta property="og:description" content="在线欣赏陈佳所有正式发行专辑，重温邓丽君金曲新声。" />
-        <meta property="og:image" content="/og/discography.jpg" />
-        <meta property="og:url" content="https://kei-music.com/music" />
-        <link rel="canonical" href="https://kei-music.com/music" />
+        <meta property="og:image" content="/og/kei.jpg" />
+        <meta property="og:url" content={canonicalUrl} />
+        <meta property="og:type" content="website" />
+        <meta property="og:site_name" content="陈佳 · 传承经典" />
+        <link rel="canonical" href={canonicalUrl} />
       </Helmet>
 
       <div className="min-h-screen bg-background py-12">

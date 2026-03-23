@@ -1,5 +1,5 @@
 import type { FC } from 'react'
-import { useEffect, useRef, useState } from 'react'; // 导入 useRef
+import { useEffect, useRef, useState } from 'react';
 import { Helmet } from 'react-helmet-async'
 import { VinylPlayer } from '@/components/ui/vinyl-player';
 import styles from './Home.module.css';
@@ -23,6 +23,7 @@ import bg_mobile4 from '@/assets/images/home_bg_mobile4.jpg';
 import bg_magnolia from '@/assets/images/home_bg_magnolia.png';
 
 export const Home: FC = () => {
+  const canonicalUrl = `https://elwin0204.github.io/kei-music/`;
   // 使用 useRef 来存储初始计算的尺寸
   const initialCalculatedSizeRef = useRef<number | null>(null);
 
@@ -129,9 +130,11 @@ export const Home: FC = () => {
         <meta name="description" content="著名歌手陈佳，邓丽君歌曲传承人，经典重现与原创音乐作品展示。" />
         <meta property="og:title" content="陈佳 · 传承经典" />
         <meta property="og:description" content="聆听陈佳演绎的邓丽君经典，感受时代金曲的永恒魅力。" />
-        <meta property="og:image" content="/og/home.jpg" />
-        <meta property="og:url" content="https://kei-music.com/" />
-        <link rel="canonical" href="https://kei-music.com/" />
+        <meta property="og:image" content="/og/kei.jpg" />
+        <meta property="og:url" content={canonicalUrl} />
+        <meta property="og:type" content="website" />
+        <meta property="og:site_name" content="陈佳 · 传承经典" />
+        <link rel="canonical" href={canonicalUrl} />
       </Helmet>
 
       <div className="fixed inset-0 -z-10 overflow-hidden">

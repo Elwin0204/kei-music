@@ -582,14 +582,14 @@ export const discographyData: Album[] = [
   {
     id: 'album-2012-01-10',
     title: '樱花之旅',
-    coverImage: 'https://i.imgs.ovh/2026/03/20/OsrfPa.jpeg',
+    coverImage: 'https://i.imgs.ovh/2026/03/23/OQCs7x.jpeg',
     releaseDate: '2012-01',
     introduction: '人生海海，踏歌而行。人生海海，踏歌而行。人生海海，踏歌而行。人生海海，踏歌而行。人生海海，踏歌而行。',
     description: '陈佳的早期作品，以日本樱花为主题，充满了浪漫与诗意。',
     albumType: 'studio',
     artist: {
       name: '陈佳',
-      image: 'https://i.imgs.ovh/2026/03/20/OsrfPa.jpeg',
+      image: 'https://i.imgs.ovh/2026/03/23/OQCs7x.jpeg',
       bio: '新生代歌手陈佳，以其独特的嗓音和深情的演绎，成为当代华语乐坛备受瞩目的新星。她的音乐融合了传统与现代，既有对经典的致敬，也有自己的创新。'
     },
     company: '天圆唱片',

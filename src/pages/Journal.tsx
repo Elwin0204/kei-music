@@ -10,6 +10,7 @@ import { Helmet } from 'react-helmet-async'
  * - 内容筛选：按时间、标签分类
  */
 export const Journal: FC = () => {
+  const canonicalUrl = `https://elwin0204.github.io/kei-music/journal`;
   return (
     <>
       <Helmet>
@@ -17,9 +18,11 @@ export const Journal: FC = () => {
         <meta name="description" content="聆听陈佳的创作心声，分享生活点滴与幕后故事。" />
         <meta property="og:title" content="陈佳 · 佳话" />
         <meta property="og:description" content="走进陈佳的内心世界，感受音乐背后的真实故事。" />
-        <meta property="og:image" content="/og/stories.jpg" />
-        <meta property="og:url" content="https://kei-music.com/stories" />
-        <link rel="canonical" href="https://kei-music.com/stories" />
+        <meta property="og:image" content="/og/kei.jpg" />
+        <meta property="og:url" content={canonicalUrl} />
+        <meta property="og:type" content="article" />
+        <meta property="og:site_name" content="陈佳 · 传承经典" />
+        <link rel="canonical" href={canonicalUrl} />
       </Helmet>
 
       <div>
