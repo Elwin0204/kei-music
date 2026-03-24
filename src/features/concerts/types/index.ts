@@ -17,11 +17,11 @@ export interface Theater {
 // 定义演唱会类型
 export interface Concert {
   id: string;
-  time: Date | string; // 可以根据实际情况选择 Date 对象或 ISO 字符串
-  location: Location; // 引用 Location 类型
-  promotionalPhoto: string; // 演唱會宣傳照: 图片 URL
-  theaterPhoto: string; // 劇院照片: 图片 URL
-  onSitePhotos: string[]; // 現場照片列表: 图片 URL 数组
+  time: string;
+  location: Location;
+  coverImage: string; // 演唱會宣傳照: 图片 URL
+  theaterImages: string[]; // 劇院照片: 图片 URL
+  onSiteImages: string[]; // 現場照片列表: 图片 URL 数组
   artistMessage: string; // 歌手寄語
   fanMessages: string[]; // 粉絲寄語: 字符串数组
 }

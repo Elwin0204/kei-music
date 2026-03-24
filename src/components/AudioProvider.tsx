@@ -6,6 +6,7 @@ import audio1 from '@/assets/audios/audio1.ogg';
 // 音频文件路径
 const BACKGROUND_MUSIC_PATH = audio1;
 
+
 interface AudioProviderProps {
   children: React.ReactNode;
 }

@@ -135,13 +135,16 @@ export const Discography: FC = () => {
                     </div>
                   </div>
                   <div className="space-y-1">
-                    <h3 className="font-semibold text-foreground line-clamp-1 group-hover:text-primary transition-colors">
+                    <h3 className="font-semibold text-sm text-foreground line-clamp-1 group-hover:text-primary transition-colors">
                       {album.title}
                     </h3>
                     <div className="flex justify-between items-center text-sm">
-                      <span className="text-muted-foreground">{album.releaseDate}</span>
-                      <span className="inline-flex items-center px-2 py-0.5 rounded-full text-xs font-medium bg-secondary text-secondary-foreground">
-                        {album.albumType}
+                      <span className="inline-flex justify-between items-center text-sm text-foreground">
+                        <span>{album.releaseDate}</span>
+                      </span>
+                      <span className="inline-flex justify-between items-center text-sm text-foreground">
+                        <KeiIcon name="Microphone" size={20} className="shrink-0 text-primary" />
+                        <span>{album.albumType}</span>
                       </span>
                     </div>
                   </div>

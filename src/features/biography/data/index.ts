@@ -56,6 +56,11 @@ export const timelineData: TimelineSection[] = [
         alt: "《天龙八部》电视剧画面"
       },
       {
+        description: "2013年3月参加天津电视台《王者归来 —纪念邓丽君特别节目》",
+        image: "https://i.imgs.ovh/2026/03/24/OWu1oQ.jpeg",
+        alt: "王者归来—纪念邓丽君特别节目"
+      },
+      {
         description: "5月12日，在台北小巨蛋与周杰伦、萧敬腾、梁静茹等共同参加了“纪念邓丽君诞辰60周年”演唱会，并现场演唱歌曲《南海姑娘》《几多愁》。",
         image: "https://i.imgs.ovh/2026/03/18/O6f8yr.jpeg",
         alt: "台北小巨蛋纪念演唱会"
@@ -102,12 +107,12 @@ export const timelineData: TimelineSection[] = [
       },
       {
         description: "5月9日，在台北小巨蛋参加了“纪念邓丽君逝世20周年”演唱会，并现场演唱邓丽君未发表的遗作《清平调》。",
-        image: "https://i.imgs.ovh/2026/03/18/O6f8yr.jpeg",
+        image: "https://i.imgs.ovh/2026/03/24/OWuxKH.jpeg",
         alt: "台北小巨蛋纪念演唱会20周年"
       },
       {
-        description: "5月23日，在东京涩谷公会堂与日本歌手五木宏、夏川里美等共同参加了“テレサ・テン没後20年メモリアルコンサート”演唱会，并现场演唱了歌曲《我和你》《北国の春》。",
-        image: "https://i.imgs.ovh/2026/03/18/O6f8yr.jpeg",
+        description: "5月23日，在东京涩谷公会堂与日本歌手五木宏、夏川里美等共同参加了“テレサ・テン没後20年メモリアルコンサート”演唱会，并现场演唱了歌曲《夜来香》《北国の春》。",
+        image: "https://i.imgs.ovh/2026/03/24/OWuwgX.jpeg",
         alt: "东京涩谷公会堂演唱会"
       },
       {
