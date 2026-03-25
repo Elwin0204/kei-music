@@ -6,6 +6,7 @@ import { timelineData } from '@/features/biography/data'
 import type { TimelineSection } from '@/features/biography/types'
 import styles from './Biography.module.css'
 import { KeiIcon, KeiIconName } from '@/components/ui/kei-icon'
+import { useState, useEffect, useRef } from 'react'
 
 /**
  * 生平事迹页：垂直时间轴叙事
@@ -36,6 +37,58 @@ export const Biography: FC = () => {
     'MusicRhythmFourSixteen',
   ];
 
+  // State to track the currently active year
+  const [activeYear, setActiveYear] = useState<string>(years[0]); // Initialize with the first year
+
+  // Refs to store the section elements
+  const sectionRefs = useRef<Record<string, HTMLElement | null>>({});
+
+  useEffect(() => {
+    const refs: Record<string, HTMLElement | null> = {};
+    timelineData.forEach(section => {
+      const element = document.getElementById(section.year.replace(/\s+/g, '-').toLowerCase());
+      if (element) {
+        refs[section.year] = element;
+      }
+    });
+    sectionRefs.current = refs;
+
+    // Options for the Intersection Observer
+    const options = {
+      root: null, // Use the viewport as the container
+      rootMargin: '0px 0px -75% 0px', // Trigger when the element is 25% from the top of the viewport
+      threshold: 0, // Trigger only when the element first enters the viewport
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          // Find the year corresponding to the intersecting entry
+          const year = Object.keys(sectionRefs.current).find(key => sectionRefs.current[key] === entry.target);
+          if (year) {
+            setActiveYear(year);
+          }
+        }
+      });
+    }, options);
+
+    // Observe all section elements
+    Object.values(sectionRefs.current).forEach(section => {
+      if (section) {
+        observer.observe(section);
+      }
+    });
+
+    // Cleanup function to unobserve all sections when component unmounts
+    return () => {
+      Object.values(sectionRefs.current).forEach(section => {
+        if (section) {
+          observer.unobserve(section);
+        }
+      });
+    };
+  }, []); // Only run once after initial render
+
   return (
     <>
       <Helmet>
@@ -60,8 +113,12 @@ export const Biography: FC = () => {
                 <li key={year}>
                   <a
                     href={`#${year.replace(/\s+/g, '-').toLowerCase()}`}
-                    className="block py-1 px-3 text-xs font-medium text-foreground whitespace-nowrap
-                              hover:bg-accent hover:text-accent-foreground rounded-lg transition-colors duration-200"
+                    className={cn(
+                      "block py-1 px-3 text-xs font-medium whitespace-nowrap rounded-lg transition-colors duration-200",
+                      activeYear === year
+                        ? "bg-primary text-primary-foreground" // Active style
+                        : "text-foreground hover:bg-accent hover:text-accent-foreground" // Inactive style
+                    )}
                   >
                     {year}
                   </a>
@@ -84,8 +141,10 @@ export const Biography: FC = () => {
                   href={`#${year.replace(/\s+/g, '-').toLowerCase()}`}
                   className={cn(
                     "block py-1.5 px-3 rounded-md text-center text-sm font-medium transition-all duration-200",
-                    "hover:bg-primary/20 hover:text-primary focus:outline-none",
-                    "text-foreground",
+                    "focus:outline-none",
+                    activeYear === year
+                      ? "bg-primary text-primary-foreground" // Active style
+                      : "text-foreground hover:bg-primary/20 hover:text-primary" // Inactive style
                   )}
                 >
                   {year}
@@ -103,7 +162,7 @@ export const Biography: FC = () => {
                 {/* 使用自定义动画的装饰线 */}
                 <span className={`absolute bottom-0 left-0 h-0.5 bg-primary ${styles.growHorizontalFromCenter}`}></span>
               </h1>
-              
+
               {/* 副标题/描述 */}
               <p className="text-base md:text-lg text-muted-foreground mx-auto leading-relaxed">
                 从古典音乐教育到金融硕士，再到成为邓丽君歌曲的卓越传承人，陈佳的艺术之路充满传奇色彩。
@@ -133,7 +192,7 @@ export const Biography: FC = () => {
                 {timelineData.map((section: TimelineSection) => (
                   <section
                     key={section.year}
-                    id={section.year.replace(/\s+/g, '-').toLowerCase()}
+                    id={section.year.replace(/\s+/g, '-').toLowerCase()} // This ID is observed
                     className="relative"
                   >
                     {/* 年份标签 - 使用主题色 */}
@@ -148,37 +207,37 @@ export const Biography: FC = () => {
                       {section.events.map((event, eventIndex) => {
                         const symbolName = musicSymbolNames[eventIndex % musicSymbolNames.length];
                         return (
-                        <div
-                          key={`${section.year}-${eventIndex}`}
-                          className={cn(
-                            "flex flex-col items-center md:flex-row md:items-center relative",
-                            eventIndex % 2 === 0 ? "md:flex-row-reverse" : ""
-                          )}
-                        >
-                          {/* 图标区域 - 放置在中间顶部 */}
-                          <div className="hidden md:block absolute -top-6 left-1/2 transform -translate-x-1/2">
-                            <div className="w-12 h-12 rounded-full rotate-90 flex items-center justify-center z-10">
-                              <KeiIcon name={symbolName} size={48} className="shrink-0" />
+                          <div
+                            key={`${section.year}-${eventIndex}`}
+                            className={cn(
+                              "flex flex-col items-center md:flex-row md:items-center relative",
+                              eventIndex % 2 === 0 ? "md:flex-row-reverse" : ""
+                            )}
+                          >
+                            {/* 图标区域 - 放置在中间顶部 */}
+                            <div className="hidden md:block absolute -top-6 left-1/2 transform -translate-x-1/2">
+                              <div className="w-12 h-12 rounded-full rotate-90 flex items-center justify-center z-10">
+                                <KeiIcon name={symbolName} size={48} className="shrink-0" />
+                              </div>
                             </div>
-                          </div>
-                          {/* 图片容器 - 移动端全宽，保留基础样式 */}
-                          <div className={cn("w-full mb-2 md:mb-0 md:w-1/2 flex justify-center", eventIndex % 2 === 0 ? "md:pl-12" : "md:pr-12")}>
-                            <div className="overflow-hidden rounded shadow-sm w-full h-auto">
-                              <img
-                                src={event.image}
-                                alt={event.alt}
-                                className="w-full object-contain"
-                                loading="lazy"
-                              />
+                            {/* 图片容器 - 移动端全宽，保留基础样式 */}
+                            <div className={cn("w-full mb-2 md:mb-0 md:w-1/2 flex justify-center", eventIndex % 2 === 0 ? "md:pl-12" : "md:pr-12")}>
+                              <div className="overflow-hidden rounded shadow-sm w-full h-auto">
+                                <img
+                                  src={event.image}
+                                  alt={event.alt}
+                                  className="w-full object-contain"
+                                  loading="lazy"
+                                />
+                              </div>
                             </div>
-                          </div>
 
-                          {/* 描述文本 - 移动端直接显示，无卡片包裹，移除背景色 */}
-                          <div className={cn("w-full md:w-1/2", eventIndex % 2 === 0 ? "md:pr-12" : "md:pl-12")}>
-                            {/* 文本颜色 */}
-                            <p className="text-sm md:text-base text-foreground leading-relaxed">{event.description}</p>
-                          </div>
-                        </div>)
+                            {/* 描述文本 - 移动端直接显示，无卡片包裹，移除背景色 */}
+                            <div className={cn("w-full md:w-1/2", eventIndex % 2 === 0 ? "md:pr-12" : "md:pl-12")}>
+                              {/* 文本颜色 */}
+                              <p className="text-sm md:text-base text-foreground leading-relaxed">{event.description}</p>
+                            </div>
+                          </div>)
                       })}
                     </div>
                   </section>

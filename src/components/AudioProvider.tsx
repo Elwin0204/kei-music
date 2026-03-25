@@ -2,9 +2,45 @@
 import { useEffect, useRef, useState } from 'react';
 import { AudioContext, AudioState } from '../hooks/useAudio'; 
 import audio1 from '@/assets/audios/audio1.ogg';
+import audio2 from '@/assets/audios/audio2.ogg';
+import audio3 from '@/assets/audios/audio3.ogg';
+import audio4 from '@/assets/audios/audio4.ogg';
+import audio5 from '@/assets/audios/audio5.ogg';
+import audio6 from '@/assets/audios/audio6.ogg';
+import audio7 from '@/assets/audios/audio7.ogg';
+import audio8 from '@/assets/audios/audio8.ogg';
+import audio9 from '@/assets/audios/audio9.ogg';
+import audio10 from '@/assets/audios/audio10.ogg';
+import audio11 from '@/assets/audios/audio11.ogg';
+import audio12 from '@/assets/audios/audio12.ogg';
+import audio13 from '@/assets/audios/audio13.ogg';
+import audio14 from '@/assets/audios/audio14.ogg';
 
-// 音频文件路径
-const BACKGROUND_MUSIC_PATH = audio1;
+// 将所有音频路径放入一个数组中
+const TRACKS = [
+  audio1,
+  audio2,
+  audio3,
+  audio4,
+  audio5,
+  audio6,
+  audio7,
+  audio8,
+  audio9,
+  audio10,
+  audio11,
+  audio12,
+  audio13,
+  audio14,
+];
+
+// 随机选择一首音频
+const getRandomTrack = () => {
+  const randomIndex = Math.floor(Math.random() * TRACKS.length);
+  return TRACKS[randomIndex];
+};
+
+const BACKGROUND_MUSIC_PATH = getRandomTrack();
 
 
 interface AudioProviderProps {
