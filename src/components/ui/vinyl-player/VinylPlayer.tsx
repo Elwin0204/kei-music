@@ -19,6 +19,8 @@ export interface VinylPlayerProps {
   // 黑胶唱片大小 (像素值)
   vinySize?: number;
   vinyOpacity?: number;
+  // 叠加颜色
+  overlayColor?: string;
 }
 
 export const VinylPlayer: React.FC<VinylPlayerProps> = ({
@@ -87,6 +89,7 @@ export const VinylPlayer: React.FC<VinylPlayerProps> = ({
               backgroundImage: `url(${vinylPatternUrl})`,
               backgroundSize: 'cover', // 确保花纹图片铺满整个唱片
               backgroundPosition: 'center', // 居中
+              mixBlendMode: 'multiply', // 使用 mix-blend-mode 进行颜色叠加
             }}
           ></div>
         </div>

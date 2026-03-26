@@ -31,7 +31,7 @@ export default function MainLayout({ children }: { children?: ReactNode }) {
         {children || <Outlet />} {/* 支持直接传 children 或自动注入 */}
 
         {/* 移动端工具栏 */}
-        <div className="fixed bottom-4 right-4 z-40 md:hidden flex flex-col items-end space-y-2">
+        <div className="fixed bottom-4 right-2 z-40 md:hidden flex flex-col items-center space-y-2">
           <MusicToggle />
           <LanguageToggle />
           <ThemeToggle />

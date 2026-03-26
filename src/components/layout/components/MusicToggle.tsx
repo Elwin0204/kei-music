@@ -15,32 +15,63 @@ import { useAudio } from '@/hooks/useAudio';
  * - 图标切换：根据当前播放状态显示对应的图标 (Pause, Play)。
  * - 可定制：允许外部通过 `className` 传入自定义样式。
  */
-interface MusicToggleProps extends React.HTMLAttributes<HTMLButtonElement> {}
+type MusicToggleProps = React.HTMLAttributes<HTMLDivElement>
 
 export const MusicToggle: FC<MusicToggleProps> = ({ className, ...props }) => {
   // 从 AudioProvider 获取状态和方法
-  const { isPlaying, togglePlay } = useAudio();
+  const { isPlaying, togglePlay, prevTrack, nextTrack } = useAudio();
 
   const handleToggle = () => {
     togglePlay();
   };
 
+  const handlePrev = () => {
+    prevTrack();
+  };
+
+  const handleNext = () => {
+    nextTrack();
+  };
+
   // 根据当前播放状态选择图标
-  const renderIcon = () => {
+  const renderPlayIcon = () => {
     return isPlaying ? <KeiIcon name="Pause" size={28} /> : <KeiIcon name="Play" size={28} />;
   };
 
   return (
-    <button
-      onClick={handleToggle}
+    <div
       className={cn(
-        "p-2 rounded-full bg-transparent hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors focus:outline-none focus:ring-1 focus:ring-ring",
+        "flex items-center justify-center bg-transparent px-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors hover:ring-1 hover:ring-ring",
         className
       )}
-      aria-label={isPlaying ? '暂停音乐' : '播放音乐'}
       {...props}
     >
-      {renderIcon()} <span className='text-sm hidden sm:inline-block'>{isPlaying ? '暂停' : '播放'}</span>
-    </button>
+      {/* 上一曲按钮 */}
+      <button
+        onClick={handlePrev}
+        className="p-2 rounded-full transition-colors cursor-pointer focus:outline-none hover:text-primary"
+        aria-label="上一曲"
+      >
+        <KeiIcon name="SkipPrevious" size={20} />
+      </button>
+
+      {/* 播放/暂停按钮 */}
+      <button
+        onClick={handleToggle}
+        className="p-2 rounded-full transition-colors cursor-pointer focus:outline-none hover:text-primary mx-1" // 添加左右 margin
+        aria-label={isPlaying ? '暂停音乐' : '播放音乐'}
+      >
+        {renderPlayIcon()}
+      </button>
+
+      {/* 下一曲按钮 */}
+      <button
+        onClick={handleNext}
+        className="p-2 rounded-full transition-colors cursor-pointer focus:outline-none hover:text-primary"
+        aria-label="下一曲"
+      >
+        <KeiIcon name="SkipNext" size={20} />
+      </button>
+    </div>
   );
 };

@@ -37,6 +37,8 @@ import { FeatherPen } from './FeatherPen';
 import { Hourglass } from './Hourglass';
 import { ReleaseDate } from './ReleaseDate';
 import { Microphone } from './Microphone';
+import { SkipPrevious } from './SkipPrevious';
+import { SkipNext } from './SkipNext';
 
 export const ICON_MAP = {
   KeiLogo,
@@ -77,7 +79,9 @@ export const ICON_MAP = {
   Play,
   Pause,
   ReleaseDate,
-  Microphone
+  Microphone,
+  SkipPrevious,
+  SkipNext
 } as const;
 
 export type KeiIconName = keyof typeof ICON_MAP;
