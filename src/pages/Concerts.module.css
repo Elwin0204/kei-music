@@ -1,0 +1,26 @@
+/* src/pages/Concerts.module.css */
+
+/**
+ * 定义一个名为 fadeMask 的类，用于创建从左到右的渐变覆盖层
+ * 这个覆盖层会使元素左边变暗/半透明，右边逐渐恢复原色
+ */
+.fadeMask {
+  position: relative; /* 为伪元素定位做准备 */
+}
+
+.fadeMask::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  /* 创建一个从左到右的半透明黑色渐变覆盖层 */
+  background: linear-gradient(90deg, 
+    rgba(0, 0, 0, 0.8) 0%, 
+    rgba(0, 0, 0, 0.6) 15%, 
+    rgba(0, 0, 0, 0) 60%       
+    );
+  pointer-events: none;
+  z-index: 1; /* 确保覆盖层在图片之上，但低于可能存在的其他内容 */
+}

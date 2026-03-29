@@ -41,7 +41,7 @@ export const MusicToggle: FC<MusicToggleProps> = ({ className, ...props }) => {
   return (
     <div
       className={cn(
-        "flex items-center justify-center bg-transparent px-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors hover:ring-1 hover:ring-ring",
+        "flex flex-col md:flex-row items-center justify-center bg-transparent px-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors hover:ring-1 hover:ring-ring",
         className
       )}
       {...props}
