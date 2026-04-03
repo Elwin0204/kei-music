@@ -1,0 +1,20 @@
+/* src/features/concerts/ui/HeroSection.module.css */
+
+.heroContainer {}
+
+.heroBackground {
+  position: relative; /* 为伪元素定位做准备 */
+}
+
+.heroBackground::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  /* 默认使用暗色主题样式 */
+  background: var(--hero-overlay);
+  pointer-events: none;
+  z-index: 1;
+}

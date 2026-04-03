@@ -58,6 +58,25 @@ html {
   /* --- 新增：五线谱颜色 --- */
   --staff: #B57EDC; /* 浅色模式下使用薰衣草紫 */
   --staff-muted: #B57EDC80; /* 半透明白色模式下的五线谱 */
+  
+  /* 演唱会banner蒙层 */
+  /* --hero-overlay: linear-gradient(90deg, 
+    rgba(250, 245, 255, 0.8) 0%, 
+    rgba(250, 245, 255, 0.6) 15%, 
+    rgba(250, 245, 255, 0) 60%); */
+  --hero-overlay: linear-gradient(90deg, 
+    rgba(255, 235, 155, 0.3) 0%,    /* 温暖的奶油色 */
+    rgba(255, 240, 180, 0.2) 15%,   /* 更淡的暖光 */
+    rgba(255, 250, 230, 0) 60%       /* 几乎透明的暖白 */
+  );
+
+  --slick-overlay: linear-gradient(90deg, 
+    rgba(250, 245, 255, 0.3) 0%,     /* 温暖的奶油色 */
+    rgba(255, 240, 180, 0.2) 15%,    /* 更淡的暖光 */
+    rgba(255, 250, 230, 0) 50%,      /* 中心透明区域 */
+    rgba(255, 240, 180, 0.2) 85%,    /* 右侧对称暖光 */
+    rgba(250, 245, 255, 0.3) 100%    /* 右侧对称奶油色 */
+  );
 }
 
 .dark {
@@ -93,6 +112,19 @@ html {
 
   --staff: #D1ADE3; /* 深色模式下使用更亮的薰衣草紫 */
   --staff-muted: #D1ADE380; /* 半透明深色模式下的五线谱 */
+
+  --hero-overlay: linear-gradient(90deg, 
+    rgba(0, 0, 0, 0.8) 0%, 
+    rgba(0, 0, 0, 0.6) 15%, 
+    rgba(0, 0, 0, 0) 60%);
+
+  --slick-overlay: linear-gradient(90deg, 
+    rgba(0, 0, 0, 0.8) 0%, 
+    rgba(0, 0, 0, 0.6) 15%, 
+    rgba(0, 0, 0, 0) 50%,    
+    rgba(0, 0, 0, 0.6) 85%,    
+    rgba(0, 0, 0, 0.8) 100% 
+  );
 }
 
 @theme inline {

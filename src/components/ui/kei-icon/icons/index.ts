@@ -39,6 +39,8 @@ import { ReleaseDate } from './ReleaseDate';
 import { Microphone } from './Microphone';
 import { SkipPrevious } from './SkipPrevious';
 import { SkipNext } from './SkipNext';
+import { SlickLeft } from './SlickLeft';
+import { SlickRight } from './SlickRight';
 
 export const ICON_MAP = {
   KeiLogo,
@@ -81,7 +83,9 @@ export const ICON_MAP = {
   ReleaseDate,
   Microphone,
   SkipPrevious,
-  SkipNext
+  SkipNext,
+  SlickLeft,
+  SlickRight
 } as const;
 
 export type KeiIconName = keyof typeof ICON_MAP;

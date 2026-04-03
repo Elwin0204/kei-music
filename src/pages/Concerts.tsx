@@ -1,10 +1,9 @@
 // src/pages/Concerts.tsx
-import { cn } from '@/utils';
 import type { FC } from 'react'
 import { Helmet } from 'react-helmet-async'
-import { useState, useEffect } from 'react';
-import concert_bg_pc from '@/assets/images/concert_bg_pc.jpg'
-import styles from './Concerts.module.css';
+import HeroSection from '@/features/concerts/ui/HeroSection';
+import LiveMoments from '@/features/concerts/ui/LiveMoments';
+import FanInteractions from '@/features/concerts/ui/FanInteractions';
 
 /**
  * 演出活动页：双视图展示
@@ -16,29 +15,6 @@ import styles from './Concerts.module.css';
 export const Concerts: FC = () => {
   const canonicalUrl = `https://elwin0204.github.io/kei-music/concerts`;
   
-  // 使用 state 存储计算出的高度
-  const [calculatedHeight, setCalculatedHeight] = useState<number>(0);
-
-  useEffect(() => {
-    const updateHeight = () => {
-      // 获取当前窗口的宽度
-      const windowWidth = window.innerWidth;
-      // 计算 16:9 比例下的高度 (windowWidth / 16 * 6)
-      const newHeight = (windowWidth / 16) * 6;
-      setCalculatedHeight(newHeight);
-    };
-
-    // 初始计算
-    updateHeight();
-
-    // 添加 resize 监听器，窗口大小改变时重新计算
-    window.addEventListener('resize', updateHeight);
-
-    // 组件卸载时移除监听器，防止内存泄漏
-    return () => {
-      window.removeEventListener('resize', updateHeight);
-    };
-  }, []); // 空依赖数组，表示此 effect 只在组件挂载和卸载时运行
 
   return (
     <>
@@ -55,18 +31,14 @@ export const Concerts: FC = () => {
       </Helmet>
 
       <div>
-        {/* 演出内容 */}
-        <div
-          className={cn(
-            "w-full bg-cover bg-center bg-no-repeat",
-            styles.fadeMask
-          )}
-          style={{
-            backgroundImage: `url(${concert_bg_pc})`,
-            // 动态设置计算出的高度
-            height: `${calculatedHeight}px`,
-          }}
-        />
+        {/* 模块 1: Hero 主视觉区 */}
+        <HeroSection onActionClick={() => window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' })} />
+        
+        {/* 模块 2: 现场风采，光影瞬间 */}
+        <LiveMoments />
+
+        {/* 模块 3: 粉丝情谊，寄语传心 */}
+        <FanInteractions />
       </div>
     </>
   )

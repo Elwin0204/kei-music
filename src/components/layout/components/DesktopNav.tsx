@@ -33,7 +33,7 @@ export const DesktopNav: FC<DesktopNavProps> = ({ navItems }) => {
   // 从上下文获取翻译函数和当前语言
   const { t, language: currentLocale } = useAppContext();
   const ulRef = useRef<HTMLUListElement>(null);
-  const activeItemRef = useRef<HTMLLIElement>(null);
+  const activeItemRefs = useRef<{[key: string]: HTMLLIElement | null}>({});
 
   const [underlineStyle, setUnderlineStyle] = useState<UnderlineStyleState>({
     width: '0',
@@ -41,22 +41,41 @@ export const DesktopNav: FC<DesktopNavProps> = ({ navItems }) => {
     opacity: 0,
   });
 
+  // 查找当前活跃的导航项
+  const activeItem = navItems.find(item => location.pathname === item.path);
+  const hasActiveItem = !!activeItem;
+
   // 当路由路径或语言改变时，重新计算下划线的位置和尺寸
   useEffect(() => {
-    if (!ulRef.current || !activeItemRef.current) return;
+    console.log('路由路径或语言改变，重新计算下划线位置和尺寸...', location.pathname);
+    
+    if (!ulRef.current) return;
 
-    const ulRect = ulRef.current.getBoundingClientRect();
-    const activeRect = activeItemRef.current.getBoundingClientRect();
+    if (hasActiveItem && activeItem) {
+      // 有活跃项，显示下划线
+      const activeRef = activeItemRefs.current[activeItem.path];
+      if (!activeRef) return;
 
-    const width = Math.round(activeRect.width);
-    const offsetLeft = Math.round(activeRect.left - ulRect.left);
+      const ulRect = ulRef.current.getBoundingClientRect();
+      const activeRect = activeRef.getBoundingClientRect();
 
-    setUnderlineStyle({
-      width: `${width}px`,
-      transform: `translateX(${offsetLeft}px)`,
-      opacity: 1,
-    });
-  }, [location.pathname, currentLocale]); // 添加 currentLocale 到依赖数组，以响应语言变化
+      const width = Math.round(activeRect.width);
+      const offsetLeft = Math.round(activeRect.left - ulRect.left);
+
+      setUnderlineStyle({
+        width: `${width}px`,
+        transform: `translateX(${offsetLeft}px)`,
+        opacity: 1,
+      });
+    } else {
+      // 没有活跃项，隐藏下划线
+      setUnderlineStyle({
+        width: '0',
+        transform: 'translateX(0)',
+        opacity: 0,
+      });
+    }
+  }, [location.pathname, currentLocale, hasActiveItem, activeItem]); // 添加相关依赖
 
   return (
     <nav aria-label="主菜单" className="hidden md:block relative">
@@ -82,7 +101,9 @@ export const DesktopNav: FC<DesktopNavProps> = ({ navItems }) => {
           return (
             <li 
               key={item.path} 
-              ref={isActive ? activeItemRef : null}
+              ref={(el) => {
+                activeItemRefs.current[item.path] = el;
+              }}
               className="relative cursor-pointer group"
             >
               {/* 修改: 使用 cn 合并类名 */}

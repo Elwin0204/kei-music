@@ -1,0 +1,29 @@
+/* src/features/concerts/ui/LiveMoments.module.css */
+
+/* 定義滑動軌道的過渡效果 */
+.slickTransition {
+  transition-property: transform;
+  /* 調整 duration 以獲得更流暢的感覺，例如 400ms */
+  transition-duration: 400ms;
+  /* 使用更流暢的 cubic-bezier 曲線 */
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  /* 可選：確保過渡盡可能平滑 */
+  /* transition-behavior: normal; (這是默認值，也可以明確寫出) */
+}
+
+/* 定義一個禁用過渡的類 */
+.slickTransition.transitionNone {
+  transition: none;
+}
+
+.slickList::before {
+  background: var(--slick-overlay);
+  content: "";
+  height: calc(100% - 48px);
+  width: 100%;
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 8;
+}

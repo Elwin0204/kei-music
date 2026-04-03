@@ -1,5 +1,5 @@
 import type { FC } from 'react'
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState, useMemo } from 'react';
 import { Helmet } from 'react-helmet-async'
 import { VinylPlayer } from '@/components/ui/vinyl-player';
 import styles from './Home.module.css';
@@ -48,6 +48,28 @@ export const Home: FC = () => {
   const [nextIndex, setNextIndex] = useState(1);
   const [isTransitioning, setIsTransitioning] = useState(false);
 
+  // 新增：玉兰花滤镜值状态
+  const [currentMagnoliaFilter, setCurrentMagnoliaFilter] = useState<string>('');
+  const [isFilterTransitioning, setIsFilterTransitioning] = useState(false);
+
+  // 使用 useRef 来跟踪是否是首次渲染
+  const isFirstRender = useRef(true);
+
+  // 使用 useMemo 缓存根据currentIndex计算的滤镜值
+  const computedFilter = useMemo(() => {
+    // 定义每个索引对应的滤镜值
+    const filters = [
+      'hue-rotate(-20deg) saturate(1.1) brightness(0.9)', // 冷色调
+      'hue-rotate(0deg) saturate(1.0) brightness(1.0)',  // 中性
+      'hue-rotate(15deg) saturate(1.2) brightness(1.05)', // 暖黄
+      'hue-rotate(30deg) saturate(1.3) brightness(1.1)',  // 暖色调
+      'hue-rotate(10deg) saturate(1.15) brightness(1.0)', // 橙色
+      'hue-rotate(-10deg) saturate(1.05) brightness(0.95)', // 蓝色
+    ];
+    
+    return filters[currentIndex % filters.length];
+  }, [currentIndex]);
+
   const changeImage = () => {
     if (totalImages <= 1) return;
 
@@ -75,6 +97,29 @@ export const Home: FC = () => {
     window.addEventListener('resize', handleResize);
     return () => window.removeEventListener('resize', handleResize);
   }, [totalImages]);
+
+  // 当computedFilter变化时，处理滤镜过渡
+  useEffect(() => {
+    // 使用Promise.resolve().then来将状态更新推迟到下一个tick
+    Promise.resolve().then(() => {
+      if (isFirstRender.current) {
+        // 首次渲染时直接设置滤镜
+        setCurrentMagnoliaFilter(computedFilter);
+        isFirstRender.current = false;
+      } else {
+        // 不是首次渲染，开始过渡动画
+        setIsFilterTransitioning(true);
+        
+        // 使用setTimeout确保DOM已经更新，然后完成过渡
+        const timer = setTimeout(() => {
+          setCurrentMagnoliaFilter(computedFilter);
+          setIsFilterTransitioning(false);
+        }, 300); // 300ms过渡时间
+
+        return () => clearTimeout(timer);
+      }
+    });
+  }, [computedFilter]); // 依赖于computedFilter
 
   const getVinyOpacity = (t: 'light' | 'dark'): number => {
     return t === 'light' ? 0.15 : 0.25;
@@ -166,6 +211,10 @@ export const Home: FC = () => {
             src={ bg_magnolia }
             alt="玉兰花"
             className="absolute top-16 left-0 h-full opacity-70"
+            style={{
+              filter: currentMagnoliaFilter,
+              transition: isFilterTransitioning ? 'filter 2s ease-in-out' : 'none' // 平滑过渡滤镜变化
+            }}
           />
         </div>
       </div>
