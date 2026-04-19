@@ -1,62 +1,101 @@
 // src/features/concerts/data/fans/index.ts
 
 import { LiveCard } from "../../types";
-import cover from '@/assets/images/home_bg_mobile.jpg';
-import cover1 from '@/assets/images/home_bg_mobile1.jpg';
-import cover2 from '@/assets/images/home_bg_mobile2.jpg';
-import cover3 from '@/assets/images/home_bg_mobile3.jpg';
-import cover4 from '@/assets/images/home_bg_mobile4.jpg';
-import cover5 from '@/assets/images/home_bg_mobile5.jpg';
+import cover1 from '@/assets/images/live-moments/live01.jpg';
+import cover2 from '@/assets/images/live-moments/live02.jpg';
+import cover3 from '@/assets/images/live-moments/live03.jpg';
+import cover4 from '@/assets/images/live-moments/live04.jpg';
+import cover5 from '@/assets/images/live-moments/live05.jpg';
+import cover6 from '@/assets/images/live-moments/live06.jpg';
+import cover7 from '@/assets/images/live-moments/live07.jpg';
+import cover8 from '@/assets/images/live-moments/live08.jpg';
+import cover9 from '@/assets/images/live-moments/live09.jpg';
+import cover10 from '@/assets/images/live-moments/live10.jpg';
+import cover11 from '@/assets/images/live-moments/live11.jpg';
+import cover12 from '@/assets/images/live-moments/live12.jpg';
+import cover13 from '@/assets/images/live-moments/live13.jpg';
+import cover14 from '@/assets/images/live-moments/live14.jpg';
+import cover15 from '@/assets/images/live-moments/live15.jpg';
+import cover16 from '@/assets/images/live-moments/live16.jpg';
+import cover17 from '@/assets/images/live-moments/live17.jpg';
+import cover18 from '@/assets/images/live-moments/live18.jpg';
+import cover19 from '@/assets/images/live-moments/live19.jpg';
 
 export const liveCardsData: LiveCard[] = [
   {
     name: "甜蜜蜜的回忆",
-    cover: cover,
-    title: "仿佛又听到了邓丽君小姐的歌声，陈佳老师的演绎太有味道了！"
+    cover: cover1
   },
   {
     name: "月亮代表我的心",
-    cover: cover1,
-    title: "《月亮代表我的心》、《甜蜜蜜》，每一首都唱进了心里，谢谢您带我们重温经典。"
+    cover: cover2
   },
   {
     name: "小城故事多",
-    cover: cover2,
-    title: "小时候听邓丽君，现在听陈佳老师，经典就是这样一代代传承下去的吧。"
+    cover: cover3
   },
   {
     name: "多语言音乐盒",
-    cover: cover3,
-    title: "粤语、日语、英语...没想到您还会这么多语言的歌曲，太厉害了，真是宝藏歌手！"
+    cover: cover4
   },
   {
     name: "茉莉花香",
-    cover: cover4,
-    title: "姐姐的声音太温柔了，唱起邓丽君的歌来，既有原味又有自己的独特韵味。"
+    cover: cover5
   },
   {
     name: "南海姑娘",
-    cover: cover5,
-    title: "今晚的演唱会让我回到了那个年代，您的歌声就是最好的时光机。"
+    cover: cover6
   },
   {
     name: "我只在乎你",
-    cover: cover1,
-    title: "《我只在乎你》唱得太深情了，现场的氛围和您的声音完美融合，绝了！"
+    cover: cover7
   },
   {
     name: "千言万语诉不尽",
-    cover: cover2,
-    title: "听到《千言万语》的前奏，瞬间泪目，陈佳老师真的唱出了那种思念的感觉。"
+    cover: cover8
   },
   {
     name: "难忘今宵",
-    cover: cover3,
-    title: "妈妈带我来听您的演唱会，说要让我也感受一下经典的魅力，我学会了《小城故事》！"
+    cover: cover9
   },
   {
     name: "又见炊烟",
-    cover: cover4,
-    title: "从广州赶来上海，就是为了听您唱的《南海姑娘》，现场版太震撼了，不虚此行！"
+    cover: cover10
+  },
+  {
+    name: "夜来香",
+    cover: cover11
+  },
+  {
+    name: "路边的野花不要采",
+    cover: cover12
+  },
+  {
+    name: "千千阙歌",
+    cover: cover13
+  },
+  {
+    name: "但愿人长久",
+    cover: cover14
+  },
+  {
+    name: "康定情歌",
+    cover: cover15
+  },
+  {
+    name: "阿里山的姑娘",
+    cover: cover16
+  },
+  {
+    name: "上海滩",
+    cover: cover17
+  },
+  {
+    name: "甜蜜蜜",
+    cover: cover18
+  },
+  {
+    name: "再见我的爱人",
+    cover: cover19
   }
 ];

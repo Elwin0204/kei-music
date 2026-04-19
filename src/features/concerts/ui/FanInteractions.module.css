@@ -1,2 +1,46 @@
 /* src/features/concerts/ui/FanInteractions.module.css */
+.marqueeContainer {
+  overflow: hidden;
+  width: 100%;
+  padding: 1rem 0;
+  white-space: nowrap;
+}
 
+.marquee {
+  display: flex;
+  align-items: center;
+  height: 100%;
+  animation: scroll linear infinite;
+}
+
+.marquee.fast {
+  animation-duration: 20s;
+}
+
+.marquee.slow {
+  animation-duration: 40s;
+}
+
+.marquee:hover {
+  animation-play-state: paused;
+}
+
+@keyframes scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.marqueeContent {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem; /* 可根据需要调整间距 */
+  flex-shrink: 0;
+}
+
+.card {
+  flex-shrink: 0;
+}

@@ -134,7 +134,7 @@ const FanInteractions: React.FC = () => {
                 return (
                   <div className="slick-slide min-h-1px float-left h-full outline-none" key={index}>
                     <div className="inline-block align-top w-85 py-6">
-                      <div className="relative h-106 w-80 overflow-hidden rounded-3xl shadow-sm shadow-gray-400/30">
+                      <div className="relative h-120 w-80 overflow-hidden rounded-3xl shadow-sm shadow-gray-400/30">
                         <img src={ item.cover } alt={item.name} className='w-full h-full object-cover' />
                       </div>
                     </div>

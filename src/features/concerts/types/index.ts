@@ -48,5 +48,10 @@ export interface Concert {
 export interface LiveCard {
   name: string;
   cover: string;  // 现场照片
-  title: string;  // 标题
+}
+
+export interface FanCard {
+  name: string;
+  checkIn: string;  // 活动信息（时间地点）
+  message: string;  // 粉丝寄语
 }

@@ -14,6 +14,7 @@ import bg_pc2 from '@/assets/images/home_bg_pc2.jpg';
 import bg_pc3 from '@/assets/images/home_bg_pc3.jpg';
 import bg_pc4 from '@/assets/images/home_bg_pc4.jpg';
 import bg_pc5 from '@/assets/images/home_bg_pc5.jpg';
+import bg_pc6 from '@/assets/images/home_bg_pc6.jpg';
 
 import bg_mobile from '@/assets/images/home_bg_mobile.jpg';
 import bg_mobile1 from '@/assets/images/home_bg_mobile1.jpg';
@@ -21,6 +22,9 @@ import bg_mobile2 from '@/assets/images/home_bg_mobile2.jpg';
 import bg_mobile3 from '@/assets/images/home_bg_mobile3.jpg';
 import bg_mobile4 from '@/assets/images/home_bg_mobile4.jpg';
 import bg_mobile5 from '@/assets/images/home_bg_mobile5.jpg';
+import bg_mobile6 from '@/assets/images/home_bg_mobile6.jpg';
+import bg_mobile7 from '@/assets/images/home_bg_mobile7.jpg';
+import bg_mobile8 from '@/assets/images/home_bg_mobile8.jpg';
 
 import bg_magnolia from '@/assets/images/home_bg_magnolia.png';
 
@@ -38,8 +42,8 @@ export const Home: FC = () => {
     rotationIntervalMs: 5000,
   });
 
-  const pcBackgroundImages = [bg_pc, bg_pc1, bg_pc2, bg_pc3, bg_pc4, bg_pc5];
-  const mobileBackgroundImages = [bg_mobile, bg_mobile1, bg_mobile2, bg_mobile3, bg_mobile4, bg_mobile5];
+  const pcBackgroundImages = [bg_pc, bg_pc1, bg_pc2, bg_pc3, bg_pc4, bg_pc5, bg_pc6];
+  const mobileBackgroundImages = [bg_mobile, bg_mobile1, bg_mobile2, bg_mobile3, bg_mobile4, bg_mobile5, bg_mobile6, bg_mobile7, bg_mobile8];
 
   const currentImageArray = window.innerWidth >= 1024 ? pcBackgroundImages : mobileBackgroundImages;
   const totalImages = currentImageArray.length;
