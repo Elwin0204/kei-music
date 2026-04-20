@@ -41,6 +41,11 @@ import { SkipPrevious } from './SkipPrevious';
 import { SkipNext } from './SkipNext';
 import { SlickLeft } from './SlickLeft';
 import { SlickRight } from './SlickRight';
+import { Fan } from './Fan';
+import { MessageHeart } from './MessageHeart';
+import { Live } from './Live';
+import { ChatHeart } from './ChatHeart';
+import { Send } from './Send';
 
 export const ICON_MAP = {
   KeiLogo,
@@ -85,7 +90,12 @@ export const ICON_MAP = {
   SkipPrevious,
   SkipNext,
   SlickLeft,
-  SlickRight
+  SlickRight,
+  Fan,
+  MessageHeart,
+  Live,
+  ChatHeart,
+  Send
 } as const;
 
 export type KeiIconName = keyof typeof ICON_MAP;

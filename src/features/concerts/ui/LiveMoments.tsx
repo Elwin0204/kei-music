@@ -93,7 +93,10 @@ const FanInteractions: React.FC = () => {
   return (
     <section className="py-8">
       <div className="px-0">
-        <h2 className="mb-6 text-center text-3xl font-bold">现场风采，光影瞬间</h2>
+        <h2 className="mb-6 text-center text-3xl font-bold flex items-center justify-center gap-2">
+          <KeiIcon name="Live" size={48} className="shrink-0 text-primary" />
+          现场风采，光影瞬间
+        </h2>
 
         {/* 卡片容器 */}
         <div ref={containerRef} className="slick-slider relative">

@@ -3,42 +3,45 @@
   overflow: hidden;
   width: 100%;
   padding: 1rem 0;
-  white-space: nowrap;
 }
 
 .marquee {
   display: flex;
   align-items: center;
   height: 100%;
-  animation: scroll linear infinite;
 }
 
-.marquee.fast {
-  animation-duration: 20s;
-}
-
-.marquee.slow {
-  animation-duration: 40s;
-}
-
-.marquee:hover {
-  animation-play-state: paused;
-}
-
-@keyframes scroll {
+@keyframes wallSlide {
   0% {
     transform: translateX(0);
   }
   100% {
-    transform: translateX(-50%);
+    transform: translateX(-100%);
   }
 }
 
 .marqueeContent {
   display: flex;
-  align-items: center;
-  gap: 0.5rem; /* 可根据需要调整间距 */
+  gap: 0.5rem;
   flex-shrink: 0;
+  flex: 1 0 auto;
+  animation: wallSlide linear infinite;
+}
+
+.marqueeContent.fast {
+  animation-duration: 50s;
+}
+
+.marqueeContent.slow {
+  animation-duration: 70s;
+}
+
+.marqueeContent.reverse {
+  animation-direction: reverse;
+}
+
+.marquee:hover .marqueeContent {
+  animation-play-state: paused;
 }
 
 .card {
